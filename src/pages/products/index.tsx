@@ -13,11 +13,13 @@ function ProductsPage(): ReactElement {
   return (
     <>
       <h1>Welcome to the shopping page</h1>
-      {products.map(({ id, title }) => (
-        <li key={id}>
-          <Link to={`${id}`}>{title}</Link>
-        </li>
-      ))}
+      <ul>
+        {products.map(({ id, title }) => (
+          <li key={id}>
+            <Link to={`${id}`}>{title}</Link>
+          </li>
+        ))}
+      </ul>
     </>
   )
 }

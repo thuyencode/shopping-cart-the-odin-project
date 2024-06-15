@@ -1,18 +1,33 @@
 import { type ReactElement } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 function Navbar(): ReactElement {
   return (
     <nav>
       <ul>
         <li>
-          <Link to={'/'}>Home</Link>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'text-green-400' : '')}
+            to={'/'}
+          >
+            Home
+          </NavLink>
         </li>
         <li>
-          <Link to={'/products'}>Product</Link>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'text-green-400' : '')}
+            to={'/products'}
+          >
+            Product
+          </NavLink>
         </li>
         <li>
-          <Link to={'/cart'}>Your Cart</Link>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'text-green-400' : '')}
+            to={'/cart'}
+          >
+            Your Cart
+          </NavLink>
         </li>
       </ul>
     </nav>

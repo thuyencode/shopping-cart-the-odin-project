@@ -1,0 +1,41 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "prettier.configPath": "prettier.config.js",
+    "prettier.prettierPath": "./node_modules/prettier",
+    "files.associations": {
+      "*.css": "tailwindcss",
+      "*.scss": "tailwindcss"
+    },
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "tailwindCSS.emmetCompletions": true,
+    "tailwindCSS.classAttributes": [
+      "class",
+      "className",
+      "ngClass",
+      "defaultProps",
+      "styles"
+    ],
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "always",
+      "source.organizeImports": "always"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "burkeholland.simple-react-snippets",
+      "dbaeumer.vscode-eslint",
+      "bradlc.vscode-tailwindcss",
+      "esbenp.prettier-vscode",
+      "yoavbls.pretty-ts-errors",
+      "formulahendry.auto-complete-tag",
+      "voldemortensen.rainbow-tags"
+    ]
+  }
+}

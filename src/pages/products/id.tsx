@@ -1,7 +1,9 @@
 import { type Product } from '@/lib/types'
+import { axios } from '@/lib/utils'
 import { type ReactElement } from 'react'
-import { useLoaderData, useNavigation } from 'react-router-dom'
+import { useLoaderData, useNavigation, type Params } from 'react-router-dom'
 
+// eslint-disable-next-line react-refresh/only-export-components
 function ProductPage(): ReactElement {
   const product = useLoaderData() as Product
   const { state } = useNavigation()
@@ -17,4 +19,23 @@ function ProductPage(): ReactElement {
   )
 }
 
-export default ProductPage
+interface ProductPageLoader {
+  params: Params<string>
+  request: { signal: AbortSignal }
+}
+
+async function loader({
+  params,
+  request: { signal }
+}: ProductPageLoader): Promise<Product> {
+  return await axios
+    .get(`https://fakestoreapi.com/products/${params.id}`, { signal })
+    .then((res) => res.data)
+}
+
+const productPageRoute = {
+  loader,
+  element: <ProductPage />
+}
+
+export default productPageRoute

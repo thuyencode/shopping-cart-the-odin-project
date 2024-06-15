@@ -1,10 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom'
 import ErrorBoundary from './ErrorBoundary'
 import Layout from './Layout'
-import HomePage from './pages/HomePage'
-import ProductPage from './pages/ProductPage'
-import ProductsPage from './pages/ProductsPage'
-import ShoppingCartPage from './pages/ShoppingCartPage'
+import ShoppingCartPage from './pages/cart'
+import HomePage from './pages/home'
+import ProductsPage from './pages/products'
+import ProductPage from './pages/products/id'
 
 export const router = createBrowserRouter(
   [
@@ -20,8 +20,11 @@ export const router = createBrowserRouter(
           children: [
             {
               index: true,
-              loader: async () => {
-                return await fetch('https://fakestoreapi.com/products?limit=10')
+              loader: async ({ request: { signal } }) => {
+                return await fetch(
+                  'https://fakestoreapi.com/products?limit=10',
+                  { signal }
+                )
               },
               element: <ProductsPage />
             },

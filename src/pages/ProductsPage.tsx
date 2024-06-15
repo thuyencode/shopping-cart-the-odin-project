@@ -1,7 +1,25 @@
+import { type Product } from '@/lib/types'
 import { type ReactElement } from 'react'
+import { Link, useLoaderData, useNavigation } from 'react-router-dom'
 
 function ProductsPage(): ReactElement {
-  return <h1>Welcome to the shopping page</h1>
+  const products = useLoaderData() as Product[]
+  const { state } = useNavigation()
+
+  if (state === 'loading') {
+    return <h1>Loading...</h1>
+  }
+
+  return (
+    <>
+      <h1>Welcome to the shopping page</h1>
+      {products.map(({ id, title }) => (
+        <li key={id}>
+          <Link to={`${id}`}>{title}</Link>
+        </li>
+      ))}
+    </>
+  )
 }
 
 export default ProductsPage

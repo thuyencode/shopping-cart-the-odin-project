@@ -18,7 +18,7 @@ function Navbar(): ReactElement {
             className={({ isActive }) => (isActive ? 'text-green-400' : '')}
             to={'/products'}
           >
-            Product
+            Products
           </NavLink>
         </li>
         <li>

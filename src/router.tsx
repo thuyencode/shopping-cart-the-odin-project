@@ -18,8 +18,23 @@ export const router = createBrowserRouter(
         {
           path: 'products',
           children: [
-            { index: true, element: <ProductsPage /> },
-            { path: ':id', element: <ProductPage /> }
+            {
+              index: true,
+              loader: async () => {
+                return await fetch('https://fakestoreapi.com/products?limit=10')
+              },
+              element: <ProductsPage />
+            },
+            {
+              path: ':id',
+              loader: async ({ params, request: { signal } }) => {
+                return await fetch(
+                  `https://fakestoreapi.com/products/${params.id}`,
+                  { signal }
+                )
+              },
+              element: <ProductPage />
+            }
           ]
         }
       ]

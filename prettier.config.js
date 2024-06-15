@@ -7,6 +7,6 @@ export default {
   semi: false,
   singleQuote: true,
   jsxSingleQuote: true,
-  trailingComma: "none",
-  plugins: ["prettier-plugin-tailwindcss"],
-};
+  trailingComma: 'none',
+  plugins: ['prettier-plugin-tailwindcss']
+}

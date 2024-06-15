@@ -8,9 +8,9 @@ function ErrorBoundary(): ReactElement {
   console.error(error)
 
   return (
-    <p>
+    <h3>
       {error.status} - {error.data}
-    </p>
+    </h3>
   )
 }
 

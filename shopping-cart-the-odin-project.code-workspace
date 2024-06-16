@@ -35,7 +35,8 @@
       "esbenp.prettier-vscode",
       "yoavbls.pretty-ts-errors",
       "formulahendry.auto-complete-tag",
-      "voldemortensen.rainbow-tags"
+      "voldemortensen.rainbow-tags",
+      "antfu.iconify"
     ]
   }
 }

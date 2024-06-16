@@ -8,9 +8,7 @@ function PageContainer(): ReactElement {
     <>
       <ScrollRestoration />
       <Navbar />
-      <div className='container flex-1'>
-        <Outlet />
-      </div>
+      <Outlet />
       <Footer />
     </>
   )

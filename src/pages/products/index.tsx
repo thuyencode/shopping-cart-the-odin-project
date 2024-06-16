@@ -1,30 +1,6 @@
+import ProductsPage from '@/components/ProductsPage'
 import { type Product } from '@/lib/types'
 import { axios } from '@/lib/utils'
-import { type ReactElement } from 'react'
-import { Link, useLoaderData, useNavigation } from 'react-router-dom'
-
-// eslint-disable-next-line react-refresh/only-export-components
-function ProductsPage(): ReactElement {
-  const products = useLoaderData() as Product[]
-  const { state } = useNavigation()
-
-  if (state === 'loading') {
-    return <h1>Loading...</h1>
-  }
-
-  return (
-    <>
-      <h1>Welcome to the shopping page</h1>
-      <ul>
-        {products.map(({ id, title }) => (
-          <li key={id}>
-            <Link to={`${id}`}>{title}</Link>
-          </li>
-        ))}
-      </ul>
-    </>
-  )
-}
 
 interface ProductsPageLoader {
   request: { signal: AbortSignal }

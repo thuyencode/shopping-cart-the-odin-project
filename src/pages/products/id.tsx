@@ -1,23 +1,7 @@
+import ProductPage from '@/components/ProductPage'
 import { type Product } from '@/lib/types'
 import { axios } from '@/lib/utils'
-import { type ReactElement } from 'react'
-import { useLoaderData, useNavigation, type Params } from 'react-router-dom'
-
-// eslint-disable-next-line react-refresh/only-export-components
-function ProductPage(): ReactElement {
-  const product = useLoaderData() as Product
-  const { state } = useNavigation()
-
-  if (state === 'loading') {
-    return <h1>Loading...</h1>
-  }
-
-  return (
-    <>
-      <h2>This product is named: &quot;{product.title}&quot;</h2>
-    </>
-  )
-}
+import { type Params } from 'react-router-dom'
 
 interface ProductPageLoader {
   params: Params<string>

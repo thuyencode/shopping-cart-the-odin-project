@@ -16,7 +16,7 @@ function Navbar(): ReactElement {
   }
 
   return (
-    <DaisyNavbar className='flex-none'>
+    <DaisyNavbar className='container flex-none'>
       <div className='flex-1'>
         <h3>The Fake Store</h3>
       </div>

@@ -11,7 +11,7 @@ function ProductsPage(): ReactElement {
   }
 
   return (
-    <div className='container flex-1'>
+    <div className=''>
       <h1>Welcome to the shopping page!</h1>
       <ul>
         {products.map(({ id, title }) => (

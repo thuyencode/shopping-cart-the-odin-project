@@ -1,7 +1,7 @@
-import ProductPage from '@/components/ProductPage'
 import { type Product } from '@/lib/types'
 import { axios } from '@/lib/utils'
 import { type Params } from 'react-router-dom'
+import ProductPage from './components/ProductPage'
 
 interface ProductPageLoader {
   params: Params<string>

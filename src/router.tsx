@@ -1,19 +1,19 @@
 import { createBrowserRouter } from 'react-router-dom'
 import ErrorBoundary from './ErrorBoundary'
-import Layout from './Layout'
-import ShoppingCartPage from './pages/cart'
-import HomePage from './pages/home'
-import productsPageRoute from './pages/products'
-import productPageRoute from './pages/products/id'
+import PageContainer from './layouts/PageContainer'
+import CartPage from './pages/CartPage'
+import HomePage from './pages/HomePage'
+import productPageRoute from './pages/Product'
+import productsPageRoute from './pages/Products'
 export const router = createBrowserRouter(
   [
     {
       path: '/',
-      element: <Layout />,
+      element: <PageContainer />,
       errorElement: <ErrorBoundary />,
       children: [
         { index: true, element: <HomePage /> },
-        { path: 'cart', element: <ShoppingCartPage /> },
+        { path: 'cart', element: <CartPage /> },
         {
           path: 'products',
           children: [

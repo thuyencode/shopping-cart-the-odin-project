@@ -1,7 +1,7 @@
 import { type ReactElement } from 'react'
 
-function ShoppingCartPage(): ReactElement {
+function CartPage(): ReactElement {
   return <h1>This is your shopping cart!</h1>
 }
 
-export default ShoppingCartPage
+export default CartPage

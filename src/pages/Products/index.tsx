@@ -1,6 +1,6 @@
-import ProductsPage from '@/components/ProductsPage'
 import { type Product } from '@/lib/types'
 import { axios } from '@/lib/utils'
+import ProductsPage from './components/ProductsPage'
 
 interface ProductsPageLoader {
   request: { signal: AbortSignal }

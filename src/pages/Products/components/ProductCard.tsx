@@ -8,7 +8,7 @@ function ProductCard(
   props: Pick<Product, 'image' | 'title' | 'price' | 'id'>
 ): ReactElement {
   return (
-    <Link to={`/products/${props.id}`}>
+    <Link to={props.id.toString()}>
       <Tooltip message={props.title} color='info'>
         <Card className='max-w-64 bg-base-100' compact>
           <Card.Image

@@ -1,5 +1,5 @@
+import { getProducts } from '@/api/products'
 import { type Product } from '@/lib/types'
-import { axios } from '@/lib/utils'
 import ProductsPage from './components/ProductsPage'
 
 interface ProductsPageLoader {
@@ -9,9 +9,7 @@ interface ProductsPageLoader {
 async function loader({
   request: { signal }
 }: ProductsPageLoader): Promise<Product[]> {
-  return await axios
-    .get('https://fakestoreapi.com/products?limit=10', { signal })
-    .then((res) => res.data)
+  return await getProducts({ signal })
 }
 
 const productsPageRoute = {

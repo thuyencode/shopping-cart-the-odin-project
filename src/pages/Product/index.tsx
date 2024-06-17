@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { getProduct } from '@/api/product'
+import { getProduct } from '@/api'
 import { type Product } from '@/lib/types'
 import { type Params } from 'react-router-dom'
 import ProductPage from './components/ProductPage'

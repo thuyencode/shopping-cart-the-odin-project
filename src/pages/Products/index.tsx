@@ -1,4 +1,4 @@
-import { getProducts } from '@/api/products'
+import { getProducts } from '@/api'
 import { type Product } from '@/lib/types'
 import ProductsPage from './components/ProductsPage'
 

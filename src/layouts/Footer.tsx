@@ -4,7 +4,7 @@ import { Footer as DaisyFooter, Link } from 'react-daisyui'
 
 function Footer(): ReactElement {
   return (
-    <DaisyFooter className='bg-neutral text-neutral-content flex justify-center p-4'>
+    <DaisyFooter className='flex justify-center bg-neutral p-4 text-neutral-content'>
       <DaisyFooter.Title className='m-0'>
         <Link
           href='https://github.com/thuyencode/shopping-cart-the-odin-project'
@@ -17,7 +17,7 @@ function Footer(): ReactElement {
       <Icon className='text-xl' icon={'mdi:copyright'} />
       <DaisyFooter.Title className='m-0'>
         <Link
-          href='https://fakestoreapi.com'
+          href={import.meta.env.VITE_API_URL}
           target='_blank'
           rel='noreferrer'
           color='info'

@@ -16,6 +16,7 @@ export type Category =
   | 'jewelery'
   | "men's clothing"
   | "women's clothing"
+  | ''
 
 export interface Cart {
   id: number

@@ -16,11 +16,11 @@ function Navbar(): ReactElement {
   }
 
   return (
-    <DaisyNavbar className='container flex-none'>
-      <div className='flex-1'>
+    <DaisyNavbar className='container absolute inset-x-0 top-0'>
+      <DaisyNavbar.Start>
         <h3>The Fake Store</h3>
-      </div>
-      <div className='flex-none gap-5'>
+      </DaisyNavbar.Start>
+      <DaisyNavbar.End className='gap-5'>
         <NavLink className={classNameWhenActive} to={'/'}>
           <h4>Home</h4>
         </NavLink>
@@ -37,10 +37,10 @@ function Navbar(): ReactElement {
               >
                 8
               </Badge>
-              <Icon className='text-xl' icon={'mdi:cart-variant'} />
+              <Icon className='text-2xl' icon={'mdi:cart-variant'} />
             </Indicator>
           </Button>
-          <Dropdown.Menu className='card card-compact z-[1] mt-3 w-52 !p-0'>
+          <Dropdown.Menu className='card card-compact z-[1] mt-3 w-52 bg-base-300 !p-0'>
             <Card.Body>
               <span className='text-lg font-bold'>8 Items</span>
               <span className='text-info'>Subtotal: $999</span>
@@ -54,7 +54,7 @@ function Navbar(): ReactElement {
             </Card.Body>
           </Dropdown.Menu>
         </Dropdown>
-      </div>
+      </DaisyNavbar.End>
     </DaisyNavbar>
   )
 }

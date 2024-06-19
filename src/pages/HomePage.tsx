@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 function HomePage(): ReactElement {
   return (
-    <Hero.Content className='flex-col'>
+    <Hero.Content className='flex-col gap-7'>
       <h1>Welcome to the home page!</h1>
       <Link to={'/products'}>
         <Button className='gap-1 capitalize' color='primary' size='lg'>

@@ -4,8 +4,8 @@ import { createPortal } from 'react-dom'
 
 function Loading(): ReactPortal {
   return createPortal(
-    <div className='absolute inset-0 z-10 flex items-center justify-center backdrop-blur-sm'>
-      <DaisyLoading className='size-20' color='primary' />
+    <div className='sticky inset-0 z-10 flex h-screen items-center justify-center backdrop-blur-sm'>
+      <DaisyLoading className='size-20' color='neutral' />
     </div>,
     document.body
   )

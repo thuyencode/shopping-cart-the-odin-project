@@ -12,10 +12,13 @@ function PageContainer(): ReactElement {
     <>
       {state === 'loading' && <Loading />}
       <ScrollRestoration />
+
       <Navbar />
+
       <Hero className='flex-1'>
         <Outlet />
       </Hero>
+
       <Footer />
     </>
   )

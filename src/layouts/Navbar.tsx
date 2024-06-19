@@ -20,13 +20,16 @@ function Navbar(): ReactElement {
       <DaisyNavbar.Start>
         <h3>The Fake Store</h3>
       </DaisyNavbar.Start>
+
       <DaisyNavbar.End className='gap-5'>
         <NavLink className={classNameWhenActive} to={'/'}>
           <h4>Home</h4>
         </NavLink>
+
         <NavLink className={classNameWhenActive} to={'/products'}>
           <h4>Products</h4>
         </NavLink>
+
         <Dropdown end>
           <Button tag='label' tabIndex={0} color='ghost' shape='circle'>
             <Indicator>
@@ -40,6 +43,7 @@ function Navbar(): ReactElement {
               <Icon className='text-2xl' icon={'mdi:cart-variant'} />
             </Indicator>
           </Button>
+
           <Dropdown.Menu className='card card-compact z-[1] mt-3 w-52 bg-base-300 !p-0'>
             <Card.Body>
               <span className='text-lg font-bold'>8 Items</span>

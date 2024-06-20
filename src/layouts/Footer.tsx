@@ -4,8 +4,8 @@ import { Footer as DaisyFooter, Link } from 'react-daisyui'
 
 function Footer(): ReactElement {
   return (
-    <DaisyFooter className='block justify-center bg-neutral p-2 text-center text-neutral-content md:flex md:p-4'>
-      <DaisyFooter.Title className='m-0 inline-block max-md:text-xs'>
+    <DaisyFooter className='place-items-center justify-center gap-1 bg-neutral p-2 text-center text-neutral-content sm:flex sm:p-4'>
+      <DaisyFooter.Title className='m-0 inline-flex items-center gap-1 max-md:text-xs'>
         <Link
           href='https://github.com/thuyencode/shopping-cart-the-odin-project'
           target='_blank'
@@ -13,12 +13,9 @@ function Footer(): ReactElement {
         >
           Thuyen Code
         </Link>
+        <Icon className='mb-0.5 text-lg md:text-xl' icon={'mdi:copyright'} />
       </DaisyFooter.Title>
-      <Icon
-        className='inline-block text-base max-md:mb-[1px] max-md:ml-1 md:text-xl'
-        icon={'mdi:copyright'}
-      />
-      <DaisyFooter.Title className='m-0 block max-md:mt-1 max-md:text-xs'>
+      <DaisyFooter.Title className='m-0 block max-md:text-xs'>
         <Link
           href={import.meta.env.VITE_API_URL}
           target='_blank'

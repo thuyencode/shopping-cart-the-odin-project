@@ -16,20 +16,54 @@ function Navbar(): ReactElement {
   }
 
   return (
-    <DaisyNavbar className='container absolute inset-x-0 top-0'>
-      <DaisyNavbar.Start>
+    <DaisyNavbar>
+      <DaisyNavbar.Start className='gap-2.5 max-md:flex-1'>
+        <Dropdown>
+          <Button
+            tag='label'
+            color='ghost'
+            tabIndex={0}
+            className='md:hidden'
+            size='sm'
+          >
+            <Icon className='text-xl' icon={'mdi:hamburger-menu'} />
+          </Button>
+          <Dropdown.Menu
+            tabIndex={0}
+            className='menu-sm z-[1] mt-3 w-52 bg-base-300'
+          >
+            <Dropdown.Item>
+              <NavLink className={classNameWhenActive} to={'/'}>
+                <h4>Home</h4>
+              </NavLink>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <NavLink className={classNameWhenActive} to={'/products'}>
+                <h4>Products</h4>
+              </NavLink>
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
         <h3>The Fake Store</h3>
       </DaisyNavbar.Start>
 
-      <DaisyNavbar.End className='gap-5'>
-        <NavLink className={classNameWhenActive} to={'/'}>
+      <DaisyNavbar.End className='gap-5 max-md:w-max'>
+        <NavLink
+          className={({ isActive }) =>
+            `${classNameWhenActive({ isActive })} max-md:hidden`
+          }
+          to={'/'}
+        >
           <h4>Home</h4>
         </NavLink>
-
-        <NavLink className={classNameWhenActive} to={'/products'}>
+        <NavLink
+          className={({ isActive }) =>
+            `${classNameWhenActive({ isActive })} max-md:hidden`
+          }
+          to={'/products'}
+        >
           <h4>Products</h4>
         </NavLink>
-
         <Dropdown end>
           <Button tag='label' tabIndex={0} color='ghost' shape='circle'>
             <Indicator>
@@ -57,7 +91,7 @@ function Navbar(): ReactElement {
               </Card.Actions>
             </Card.Body>
           </Dropdown.Menu>
-        </Dropdown>
+        </Dropdown>{' '}
       </DaisyNavbar.End>
     </DaisyNavbar>
   )

@@ -10,7 +10,7 @@ function Rating({
     <div className='flex items-center gap-1'>
       <DaisyRating
         className='mb-0.5'
-        value={Math.floor(rate * 2)}
+        value={Math.round(rate * 2)}
         size='sm'
         half
       >

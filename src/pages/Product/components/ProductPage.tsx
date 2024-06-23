@@ -9,7 +9,7 @@ function ProductPage(): ReactElement {
   const product = useLoaderData() as Product
 
   return (
-    <Hero.Content className='mb-20 mt-28 w-full self-start'>
+    <Hero.Content className='mb-20 mt-5 w-full self-start md:mt-28'>
       <Card className='rounded-none max-md:gap-10' side='md' bordered={false}>
         <Card.Image
           className='w-full !max-w-96 self-start rounded'

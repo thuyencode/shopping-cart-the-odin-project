@@ -4,18 +4,18 @@
 
 @layer base {
   h1 {
-    @apply text-3xl font-bold md:text-4xl;
+    @apply text-3xl font-bold lg:text-4xl;
   }
   h2 {
-    @apply text-2xl font-bold md:text-3xl;
+    @apply text-2xl font-bold lg:text-3xl;
   }
   h3 {
-    @apply text-xl font-semibold md:text-2xl;
+    @apply text-xl font-semibold lg:text-2xl;
   }
   h4 {
-    @apply text-lg font-medium md:text-xl;
+    @apply text-lg font-medium lg:text-xl;
   }
   p {
-    @apply text-base md:text-lg;
+    @apply text-base lg:text-lg;
   }
 }

@@ -10,16 +10,18 @@ function ProductCard(
   return (
     <Link to={props.id.toString()}>
       <Tooltip message={props.title} color='info'>
-        <Card className='max-w-64 bg-base-300' compact>
+        <Card className='max-w-64 bg-base-300 shadow-lg' compact>
           <Card.Image
             className='aspect-square object-cover object-top duration-300 hover:scale-105'
             src={props.image}
           />
+
           <Card.Body className='gap-5'>
             <Card.Title className='justify-between text-base font-normal capitalize'>
               <span className='truncate font-medium'>{props.title}</span>
               <span>{props.price}$</span>
             </Card.Title>
+
             <Card.Actions>
               <Button fullWidth color='neutral'>
                 Check this product

@@ -8,7 +8,7 @@ function ProductsPage(): ReactElement {
   const products = useLoaderData() as Product[]
 
   return (
-    <Hero.Content className='mb-20 mt-28'>
+    <Hero.Content className='mb-20 mt-5 md:mt-28'>
       <div className='flex flex-wrap items-center justify-center gap-10'>
         {products.map((product) => (
           <ProductCard

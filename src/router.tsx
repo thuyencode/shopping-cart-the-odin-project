@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import ErrorBoundary from './ErrorBoundary'
+import RouteErrorBoundary from './RouteErrorBoundary'
 import PageContainer from './layouts/PageContainer'
 import CartPage from './pages/CartPage'
 import HomePage from './pages/HomePage'
@@ -10,7 +10,7 @@ export const router = createBrowserRouter(
     {
       path: '/',
       element: <PageContainer />,
-      errorElement: <ErrorBoundary />,
+      errorElement: <RouteErrorBoundary />,
       children: [
         { index: true, element: <HomePage /> },
         { path: 'cart', element: <CartPage /> },

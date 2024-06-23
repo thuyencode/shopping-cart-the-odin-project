@@ -1,17 +1,11 @@
 import { type ReactElement } from 'react'
 import { useRouteError } from 'react-router-dom'
 
-function ErrorBoundary(): ReactElement {
+function RouteErrorBoundary(): ReactElement {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const error: any = useRouteError()
 
-  console.error(error)
-
-  return (
-    <h3>
-      {error.status} - {error.data}
-    </h3>
-  )
+  return <h3>{error}</h3>
 }
 
-export default ErrorBoundary
+export default RouteErrorBoundary

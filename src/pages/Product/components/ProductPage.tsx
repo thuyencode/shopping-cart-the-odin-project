@@ -9,7 +9,7 @@ function ProductPage(): ReactElement {
   const product = useLoaderData() as Product
 
   return (
-    <Hero.Content className='mb-20 mt-5 w-full self-start md:mt-28'>
+    <Hero.Content className='mb-20 mt-5 w-full self-start md:mt-20'>
       <Card className='rounded-none max-md:gap-10' side='md' bordered={false}>
         <Card.Image
           className='w-full !max-w-96 self-start rounded'
@@ -30,10 +30,15 @@ function ProductPage(): ReactElement {
           </div>
 
           <Card.Actions className='max-md:justify-between'>
-            <Button className='gap-1 sm:text-base' color='primary'>
-              Add to cart{' '}
-              <Icon className='text-lg sm:text-xl' icon={'mdi:cart-variant'} />
-            </Button>
+            {product.id !== 0 ? (
+              <Button className='gap-1 sm:text-base' color='primary'>
+                Add to cart{' '}
+                <Icon
+                  className='text-lg sm:text-xl'
+                  icon={'mdi:cart-variant'}
+                />
+              </Button>
+            ) : null}
             <Link to={'/products'}>
               <Button className='gap-1 sm:text-base' color='neutral'>
                 More products{' '}

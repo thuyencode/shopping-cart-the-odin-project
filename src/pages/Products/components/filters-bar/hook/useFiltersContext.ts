@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { FiltersContext, type FiltersContextState } from '..'
+import { FiltersContext, type FiltersContextState } from '../context'
 
 export default function useFiltersContext(): FiltersContextState {
   const context = useContext(FiltersContext)

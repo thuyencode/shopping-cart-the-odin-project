@@ -1,4 +1,4 @@
-import { type Product } from '@/lib/types'
+import { type Category, type Product } from '@/lib/types'
 import Axios from 'axios'
 import { setupCache } from 'axios-cache-interceptor'
 
@@ -44,6 +44,16 @@ export async function getProducts(options: {
 }): Promise<Product[]> {
   return await baseApi
     .get('products?limit=10', {
+      signal: options.signal
+    })
+    .then((res) => res.data)
+}
+
+export async function getCategories(options: {
+  signal: AbortSignal
+}): Promise<Category[]> {
+  return await baseApi
+    .get('products/categories', {
       signal: options.signal
     })
     .then((res) => res.data)

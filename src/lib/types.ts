@@ -50,3 +50,5 @@ export interface User {
   }
   phone: string
 }
+
+export type SortIn = 'asc' | 'desc' | ''

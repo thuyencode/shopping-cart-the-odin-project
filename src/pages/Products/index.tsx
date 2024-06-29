@@ -1,15 +1,21 @@
-import { getProducts } from '@/api'
-import { type Product } from '@/lib/types'
+import { getCategories, getProducts } from '@/lib/api'
+import { type Category, type Product } from '@/lib/types'
 import ProductsPage from './components/ProductsPage'
 
-interface ProductsPageLoader {
+interface ProductsPageLoaderProps {
   request: { signal: AbortSignal }
 }
 
 async function loader({
   request: { signal }
-}: ProductsPageLoader): Promise<Product[]> {
-  return await getProducts({ signal })
+}: ProductsPageLoaderProps): Promise<{
+  products: Product[]
+  categories: Category[]
+}> {
+  return {
+    products: await getProducts({ signal }),
+    categories: await getCategories({ signal })
+  }
 }
 
 const productsPageRoute = {

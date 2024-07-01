@@ -1,6 +1,8 @@
 import { type Category } from '@/lib/types'
+import isEqual from 'lodash/isEqual'
 import { useReducer, type PropsWithChildren, type ReactElement } from 'react'
 import FiltersBarCategory from './FiltersBarCategory'
+import FiltersBarClear from './FiltersBarClear'
 import FiltersBarSearch from './FiltersBarSearch'
 import FiltersBarSortById from './FiltersBarSortById'
 import { FiltersContext } from './context'
@@ -25,6 +27,14 @@ function FiltersBar({ children }: PropsWithChildren): ReactElement {
     dispatch({ type: 'SET_CATEGORY', value: category })
   }
 
+  function clearFilters(): void {
+    dispatch({ type: 'CLEAR_FILTERS' })
+  }
+
+  function isFiltersChanged(): boolean {
+    return !isEqual(state, initialFiltersState)
+  }
+
   return (
     <div className='sticky top-28 flex flex-col gap-2 self-start'>
       <FiltersContext.Provider
@@ -33,8 +43,11 @@ function FiltersBar({ children }: PropsWithChildren): ReactElement {
           sortInDescendingMode,
           searchForProducts,
           chooseCategory,
+          clearFilters,
           sortIn: state.sortIn,
-          category: state.category
+          category: state.category,
+          keywords: state.keywords,
+          isFiltersChanged
         }}
       >
         {children}
@@ -46,5 +59,6 @@ function FiltersBar({ children }: PropsWithChildren): ReactElement {
 FiltersBar.SortById = FiltersBarSortById
 FiltersBar.Category = FiltersBarCategory
 FiltersBar.Search = FiltersBarSearch
+FiltersBar.Clear = FiltersBarClear
 
 export default FiltersBar

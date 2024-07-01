@@ -6,8 +6,11 @@ export interface FiltersContextState {
   sortInDescendingMode: () => void
   searchForProducts: (keywords: string) => void
   chooseCategory: (category: Category) => void
+  clearFilters: () => void
   sortIn: SortIn
   category: Category
+  keywords: string
+  isFiltersChanged: () => boolean
 }
 
 export const FiltersContext = createContext<FiltersContextState | null>(null)

@@ -3,7 +3,7 @@ import { type Category, type SortIn } from '@/lib/types'
 export interface FiltersState {
   category: Category
   sortIn: SortIn
-  value: string
+  keywords: string
 }
 
 type FiltersAction =
@@ -28,7 +28,7 @@ type FiltersAction =
 export const initialFiltersState: FiltersState = {
   category: '',
   sortIn: '',
-  value: ''
+  keywords: ''
 }
 
 export function filtersReducer(
@@ -44,6 +44,9 @@ export function filtersReducer(
 
     case 'SET_CATEGORY':
       return { ...state, category: action.value }
+
+    case 'SEARCH':
+      return { ...state, keywords: action.value }
 
     case 'CLEAR_FILTERS':
       return initialFiltersState

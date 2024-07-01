@@ -1,7 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Icon } from '@iconify/react/dist/iconify.js'
-import { type ReactElement } from 'react'
+import { useDeferredValue, useEffect, useState, type ReactElement } from 'react'
+import useFiltersContext from './hook/useFiltersContext'
 
 function FiltersBarSearch(): ReactElement {
+  const [input, setInput] = useState('')
+  const keywords = useDeferredValue(input)
+  const { searchForProducts, isFiltersChanged: isFiltersChange } =
+    useFiltersContext()
+
+  useEffect(() => {
+    searchForProducts(keywords)
+  }, [keywords])
+
+  useEffect(() => {
+    if (!isFiltersChange()) setInput('')
+  }, [isFiltersChange])
+
   return (
     <label className='input input-bordered flex items-center gap-2'>
       <input
@@ -9,6 +24,10 @@ function FiltersBarSearch(): ReactElement {
         type='text'
         name='search'
         placeholder='Search...'
+        value={input}
+        onChange={(e) => {
+          setInput(e.target.value)
+        }}
       />
       <Icon className='text-xl' icon={'mdi:search'} />
     </label>

@@ -10,6 +10,7 @@ function ProductsPage(): ReactElement {
         <FiltersBar.Search />
         <FiltersBar.SortById />
         <FiltersBar.Category />
+        <FiltersBar.Clear />
       </FiltersBar>
 
       <ProductsList />

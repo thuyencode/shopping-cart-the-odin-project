@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Icon } from '@iconify/react/dist/iconify.js'
+import { Icon } from '@iconify/react'
 import { useDeferredValue, useEffect, useState, type ReactElement } from 'react'
 import useFiltersContext from './hook/useFiltersContext'
 

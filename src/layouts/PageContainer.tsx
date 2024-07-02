@@ -1,6 +1,5 @@
 import Loading from '@/components/Loading'
 import { type ReactElement } from 'react'
-import { Hero } from 'react-daisyui'
 import { Outlet, ScrollRestoration, useNavigation } from 'react-router-dom'
 import Footer from './Footer'
 import Navbar from './Navbar'
@@ -15,9 +14,9 @@ function PageContainer(): ReactElement {
 
       <Navbar />
 
-      <Hero className='flex-1'>
+      <div className='hero flex-1'>
         <Outlet />
-      </Hero>
+      </div>
 
       <Footer />
     </>

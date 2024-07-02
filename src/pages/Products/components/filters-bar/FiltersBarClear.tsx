@@ -1,6 +1,5 @@
 import { Icon } from '@iconify/react'
 import { type ReactElement } from 'react'
-import { Button } from 'react-daisyui'
 import useFiltersContext from './hook/useFiltersContext'
 
 function FiltersBarClear(): ReactElement {
@@ -9,14 +8,13 @@ function FiltersBarClear(): ReactElement {
   return (
     <>
       {isFiltersChanged() ? (
-        <Button
-          className='justify-start'
-          color='primary'
+        <button
+          className='btn btn-primary justify-start'
           onClick={clearFilters}
         >
           <Icon className='text-lg' icon={'mdi:close'} />
           Clear filters
-        </Button>
+        </button>
       ) : null}
     </>
   )

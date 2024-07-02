@@ -1,32 +1,24 @@
 import { Icon } from '@iconify/react'
 import { type ReactElement } from 'react'
-import {
-  Badge,
-  Button,
-  Card,
-  Navbar as DaisyNavbar,
-  Dropdown,
-  Indicator
-} from 'react-daisyui'
 import { NavLink } from 'react-router-dom'
 
 function Navbar(): ReactElement {
   return (
-    <DaisyNavbar className='sticky top-0 z-10 bg-base-100 shadow-lg'>
-      <DaisyNavbar.Start className='gap-2.5 max-md:flex-1'>
-        <Dropdown>
-          <Dropdown.Toggle
-            color='ghost'
-            tabIndex={0}
-            className='md:hidden'
-            size='sm'
-          >
+    <nav
+      className='navbar sticky top-0 z-10 bg-base-100 shadow-lg'
+      role='navigation'
+      aria-label='Navbar'
+    >
+      <div className='navbar-start gap-2.5 max-md:flex-1'>
+        <details className='dropdown md:hidden'>
+          <summary className='btn btn-ghost btn-sm' tabIndex={0}>
             <Icon className='text-xl' icon={'mdi:hamburger-menu'} />
-          </Dropdown.Toggle>
+          </summary>
 
-          <Dropdown.Menu
+          <ul
+            className='menu dropdown-content z-[1] mt-3 w-52 rounded-box bg-base-300'
             tabIndex={0}
-            className='menu-sm z-[1] mt-3 w-52 bg-base-300'
+            role='menu'
           >
             <li role='menuitem'>
               <NavLink
@@ -50,13 +42,13 @@ function Navbar(): ReactElement {
                 </h4>
               </NavLink>
             </li>
-          </Dropdown.Menu>
-        </Dropdown>
+          </ul>
+        </details>
 
         <h3>The Fake Store</h3>
-      </DaisyNavbar.Start>
+      </div>
 
-      <DaisyNavbar.End className='gap-1 max-md:w-max'>
+      <div className='navbar-end gap-1 max-md:w-max'>
         <NavLink
           className={({ isActive }) =>
             `btn btn-ghost max-md:hidden ${isActive ? 'text-primary' : ''}`
@@ -80,38 +72,42 @@ function Navbar(): ReactElement {
           </h4>
         </NavLink>
 
-        <Dropdown end>
-          <Dropdown.Toggle tabIndex={0} color='ghost'>
-            <Indicator>
-              <Badge
-                size='sm'
-                color='primary'
-                className={Indicator.Item.className()}
+        <details className='dropdown dropdown-end'>
+          <summary className='btn btn-ghost' tabIndex={0} role='button'>
+            <div className='indicator'>
+              <div
+                className='badge indicator-item badge-primary badge-sm'
+                aria-label='Badge'
               >
                 8
-              </Badge>
+              </div>
               <Icon className='text-xl lg:text-2xl' icon={'mdi:cart-variant'} />
-            </Indicator>
-          </Dropdown.Toggle>
+            </div>
+          </summary>
 
-          <Dropdown.Menu className='card card-compact z-[1] mt-3 w-52 bg-base-300 !p-0'>
-            <Card.Body>
-              <Card.Title className='text-lg font-bold'>8 Items</Card.Title>
+          <div
+            className='card dropdown-content card-compact z-[1] mt-3 w-52 bg-base-300 !p-0'
+            tabIndex={0}
+          >
+            <div className='card-body'>
+              <h4 className='font-bold'>8 Items</h4>
 
               <span className='text-info'>Subtotal: $999</span>
 
-              <Card.Actions>
-                <NavLink className='w-full' to={'/cart'}>
-                  <Button color='primary' fullWidth>
-                    View cart
-                  </Button>
+              <div className='card-actions'>
+                <NavLink
+                  className='btn btn-primary btn-block'
+                  to={'/cart'}
+                  role='button'
+                >
+                  View cart
                 </NavLink>
-              </Card.Actions>
-            </Card.Body>
-          </Dropdown.Menu>
-        </Dropdown>
-      </DaisyNavbar.End>
-    </DaisyNavbar>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </nav>
   )
 }
 

@@ -1,6 +1,5 @@
 import { Icon } from '@iconify/react'
 import { type ReactElement } from 'react'
-import { Button, Dropdown } from 'react-daisyui'
 import useFiltersContext from './hook/useFiltersContext'
 
 function FiltersBarSortById(): ReactElement {
@@ -19,49 +18,51 @@ function FiltersBarSortById(): ReactElement {
   }
 
   return (
-    <Dropdown className='w-full'>
-      <Dropdown.Toggle button={false}>
-        <Button className='w-full justify-start'>
-          {changeDropdownToggleLabel()}
-        </Button>
-      </Dropdown.Toggle>
+    <details className='dropdown w-full' role='listbox'>
+      <summary className='btn btn-block justify-start' tabIndex={0}>
+        {changeDropdownToggleLabel()}
+      </summary>
 
-      <Dropdown.Menu className='z-[1] mt-2 w-full bg-base-300'>
-        <Dropdown.Item className='items-center' onClick={sortInAscendingMode}>
+      <ul
+        className='menu dropdown-content z-[1] mt-2 w-full rounded-box bg-base-300'
+        role='menu'
+        tabIndex={0}
+      >
+        <li role='menuitem' onClick={sortInAscendingMode}>
           <Ascending />
-        </Dropdown.Item>
-        <Dropdown.Item className='items-center' onClick={sortInDescendingMode}>
+        </li>
+        <li role='menuitem' onClick={sortInDescendingMode}>
           <Descending />
-        </Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+        </li>
+      </ul>
+    </details>
   )
 }
 
 function Default(): ReactElement {
   return (
-    <>
+    <span className='inline-flex items-center gap-2'>
       <Icon className='text-lg' icon={'mdi:chevron-down'} />
       Sort By ID
-    </>
+    </span>
   )
 }
 
 function Ascending(): ReactElement {
   return (
-    <>
+    <span className='inline-flex items-center gap-2'>
       <Icon className='text-lg' icon={'mdi:sort-numeric-ascending'} />
       Ascending
-    </>
+    </span>
   )
 }
 
 function Descending(): ReactElement {
   return (
-    <>
+    <span className='inline-flex items-center gap-2'>
       <Icon className='text-lg' icon={'mdi:sort-numeric-descending'} />
       Descending
-    </>
+    </span>
   )
 }
 

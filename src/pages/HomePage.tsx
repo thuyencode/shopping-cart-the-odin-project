@@ -1,20 +1,19 @@
 import { Icon } from '@iconify/react'
 import { type ReactElement } from 'react'
-import { Button, Hero } from 'react-daisyui'
 import { Link } from 'react-router-dom'
 
 function HomePage(): ReactElement {
   return (
-    <Hero.Content className='flex-col gap-7 text-center'>
+    <div className='hero-content flex-col gap-7 text-center' role='banner'>
       <h1>Welcome to the home page!</h1>
 
       <Link to={'/products'}>
-        <Button className='gap-1 capitalize lg:btn-lg' color='primary'>
+        <button className='btn btn-primary gap-1 capitalize lg:btn-lg'>
           Check our products
           <Icon className='text-lg lg:text-xl' icon={'mdi:shopping'} />
-        </Button>
+        </button>
       </Link>
-    </Hero.Content>
+    </div>
   )
 }
 

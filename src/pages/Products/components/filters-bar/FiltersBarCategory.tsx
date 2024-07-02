@@ -1,7 +1,6 @@
 import { type Category } from '@/lib/types'
 import { Icon } from '@iconify/react'
 import { type ReactElement } from 'react'
-import { Button, Dropdown } from 'react-daisyui'
 import { useLoaderData } from 'react-router-dom'
 import useFiltersContext from './hook/useFiltersContext'
 
@@ -20,28 +19,30 @@ function FiltersBarCategory(): ReactElement {
   }
 
   return (
-    <Dropdown className='w-full'>
-      <Dropdown.Toggle button={false}>
-        <Button className='w-full justify-start capitalize'>
-          <Icon className='text-lg' icon={'mdi:chevron-down'} />
-          {changeDropdownToggleLabel()}
-        </Button>
-      </Dropdown.Toggle>
+    <details className='dropdown w-full' role='listbox'>
+      <summary className='btn btn-block justify-start capitalize' tabIndex={0}>
+        <Icon className='text-lg' icon={'mdi:chevron-down'} />
+        {changeDropdownToggleLabel()}
+      </summary>
 
-      <Dropdown.Menu className='z-[1] mt-2 w-full bg-base-300'>
+      <ul
+        className='menu dropdown-content z-[1] mt-2 w-full rounded-box bg-base-300'
+        role='menu'
+        tabIndex={0}
+      >
         {categories.map((category) => (
-          <Dropdown.Item
-            className='items-center capitalize'
+          <li
+            role='menuitem'
             onClick={() => {
               chooseCategory(category)
             }}
             key={category}
           >
-            {category}
-          </Dropdown.Item>
+            <span className='capitalize'>{category}</span>
+          </li>
         ))}
-      </Dropdown.Menu>
-    </Dropdown>
+      </ul>
+    </details>
   )
 }
 

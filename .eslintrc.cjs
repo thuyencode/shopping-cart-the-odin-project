@@ -19,7 +19,8 @@ module.exports = {
     '.eslintrc.cjs',
     'tailwind.config.js',
     'prettier.config.js',
-    'postcss.config.js'
+    'postcss.config.js',
+    'vite.config.ts'
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'react-refresh', 'react', 'jsx-a11y'],

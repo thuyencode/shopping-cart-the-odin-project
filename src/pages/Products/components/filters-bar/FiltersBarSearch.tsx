@@ -6,16 +6,15 @@ import useFiltersContext from './hook/useFiltersContext'
 function FiltersBarSearch(): ReactElement {
   const [input, setInput] = useState('')
   const keywords = useDeferredValue(input)
-  const { searchForProducts, isFiltersChanged: isFiltersChange } =
-    useFiltersContext()
+  const { searchForProducts, isFiltersChanged } = useFiltersContext()
 
   useEffect(() => {
     searchForProducts(keywords)
   }, [keywords])
 
   useEffect(() => {
-    if (!isFiltersChange()) setInput('')
-  }, [isFiltersChange])
+    if (!isFiltersChanged()) setInput('')
+  }, [isFiltersChanged])
 
   return (
     <label className='input input-bordered flex items-center gap-2'>

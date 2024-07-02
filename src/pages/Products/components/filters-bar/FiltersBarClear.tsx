@@ -4,12 +4,11 @@ import { Button } from 'react-daisyui'
 import useFiltersContext from './hook/useFiltersContext'
 
 function FiltersBarClear(): ReactElement {
-  const { clearFilters, isFiltersChanged: isFiltersChange } =
-    useFiltersContext()
+  const { clearFilters, isFiltersChanged } = useFiltersContext()
 
   return (
     <>
-      {isFiltersChange() ? (
+      {isFiltersChanged() ? (
         <Button
           className='justify-start'
           color='primary'

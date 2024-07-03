@@ -2,7 +2,7 @@
 import { getProduct } from '@/lib/api'
 import { type Product } from '@/lib/types'
 import { type Params } from 'react-router-dom'
-import ProductPage from './components/ProductPage'
+import ProductPage from './ProductPage'
 
 interface ProductPageLoader {
   params: Params<string>

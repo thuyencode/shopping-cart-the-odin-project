@@ -2,7 +2,7 @@ import { type Product } from '@/lib/types'
 import { Icon } from '@iconify/react'
 import { type ReactElement } from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
-import Rating from './Rating'
+import Rating from './components/Rating'
 
 function ProductPage(): ReactElement {
   const product = useLoaderData() as Product

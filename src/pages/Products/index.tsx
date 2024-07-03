@@ -1,6 +1,6 @@
 import { getCategories, getProducts } from '@/lib/api'
 import { type Category, type Product } from '@/lib/types'
-import ProductsPage from './components/ProductsPage'
+import ProductsPage from './ProductsPage'
 
 interface ProductsPageLoaderProps {
   request: { signal: AbortSignal }

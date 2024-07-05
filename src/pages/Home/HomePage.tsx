@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function HomePage(): ReactElement {
   return (
-    <div className='hero-content flex-col gap-7 text-center' role='banner'>
+    <div className='hero-content flex-col gap-7' role='banner'>
       <h1>Welcome to the home page!</h1>
 
       <Link to={'/products'}>

@@ -95,7 +95,7 @@ function FiltersBar({ children }: PropsWithChildren): ReactElement {
   }
 
   return (
-    <div className='sticky top-28 flex flex-col gap-2 self-start'>
+    <div className='ml-10 flex w-full gap-2'>
       <FiltersContext.Provider
         value={{
           sortInAscendingMode,

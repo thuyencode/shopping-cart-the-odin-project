@@ -4,7 +4,7 @@ import FiltersBar from './components/filters-bar'
 
 function ProductsPage(): ReactElement {
   return (
-    <div className='hero-content mb-20 mt-5 max-w-[100rem] max-md:flex-col md:mt-10'>
+    <div className='hero-content mb-20 size-full flex-col justify-start pt-24'>
       <FiltersBar>
         <FiltersBar.Search />
         <FiltersBar.SortById />

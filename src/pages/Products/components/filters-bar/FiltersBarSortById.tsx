@@ -18,13 +18,13 @@ function FiltersBarSortById(): ReactElement {
   }
 
   return (
-    <details className='dropdown w-full' role='listbox'>
-      <summary className='btn btn-block justify-start' tabIndex={0}>
+    <details className='dropdown' role='listbox'>
+      <summary className='btn' tabIndex={0}>
         {changeDropdownToggleLabel()}
       </summary>
 
       <ul
-        className='menu dropdown-content z-[1] mt-2 w-full rounded-box bg-base-300'
+        className='menu dropdown-content z-[1] mt-2 w-52 rounded-box bg-base-300'
         role='menu'
         tabIndex={0}
       >

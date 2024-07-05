@@ -8,10 +8,7 @@ function FiltersBarClear(): ReactElement {
   return (
     <>
       {isFiltersChanged() ? (
-        <button
-          className='btn btn-primary justify-start'
-          onClick={clearFilters}
-        >
+        <button className='btn btn-primary' onClick={clearFilters}>
           <Icon className='text-lg' icon={'mdi:close'} />
           Clear filters
         </button>

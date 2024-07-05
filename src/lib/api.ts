@@ -1,4 +1,4 @@
-import { type Category, type Product } from '@/lib/types'
+import { type Category, type Product, type SortIn } from '@/lib/types'
 import Axios from 'axios'
 import { setupCache } from 'axios-cache-interceptor'
 
@@ -22,9 +22,21 @@ export async function getProduct(options: {
 
 export async function getProducts(options: {
   signal: AbortSignal
+  category?: Category
+  sortIn?: SortIn
 }): Promise<Product[]> {
+  let query = 'products'
+
+  if (options.category !== undefined) {
+    query += `/category/${options.category}`
+  }
+
+  if (options.sortIn !== undefined) {
+    query += `?sort=${options.sortIn}`
+  }
+
   return await baseApi
-    .get('products?limit=10', {
+    .get(query, {
       signal: options.signal
     })
     .then((res) => res.data)

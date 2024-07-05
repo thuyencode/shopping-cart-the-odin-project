@@ -52,3 +52,9 @@ export interface User {
 }
 
 export type SortIn = 'asc' | 'desc' | ''
+
+export interface ProductsFilterParams {
+  category: Category
+  sortIn: SortIn
+  search: string
+}

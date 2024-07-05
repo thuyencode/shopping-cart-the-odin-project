@@ -1,35 +1,35 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Icon } from '@iconify/react'
-import { useDeferredValue, useEffect, useState, type ReactElement } from 'react'
+import { useRef, type FormEvent, type ReactElement } from 'react'
 import useFiltersContext from './hook/useFiltersContext'
 
 function FiltersBarSearch(): ReactElement {
-  const [input, setInput] = useState('')
-  const keywords = useDeferredValue(input)
-  const { searchForProducts, isFiltersChanged } = useFiltersContext()
+  const ref = useRef<HTMLInputElement>(null)
+  const { search, searchForProducts } = useFiltersContext()
 
-  useEffect(() => {
-    searchForProducts(keywords)
-  }, [keywords])
+  function handleSubmit(event: FormEvent): void {
+    event.preventDefault()
 
-  useEffect(() => {
-    if (!isFiltersChanged()) setInput('')
-  }, [isFiltersChanged])
+    if (ref.current !== null) {
+      searchForProducts(ref.current.value)
+    }
+  }
 
   return (
-    <label className='input input-bordered flex items-center gap-2'>
+    <form
+      className='input input-bordered flex items-center gap-2'
+      onSubmit={handleSubmit}
+    >
       <input
         className='grow'
+        ref={ref}
         type='text'
         name='search'
         placeholder='Search...'
-        value={input}
-        onChange={(e) => {
-          setInput(e.target.value)
-        }}
+        defaultValue={search}
       />
       <Icon className='text-xl' icon={'mdi:search'} />
-    </label>
+    </form>
   )
 }
 

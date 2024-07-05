@@ -1,10 +1,4 @@
-import { type Category, type SortIn } from '@/lib/types'
-
-export interface FiltersState {
-  category: Category
-  sortIn: SortIn
-  keywords: string
-}
+import { type Category, type ProductsFilterParams } from '@/lib/types'
 
 type FiltersAction =
   | {
@@ -25,16 +19,16 @@ type FiltersAction =
       type: 'CLEAR_FILTERS'
     }
 
-export const initialFiltersState: FiltersState = {
+export const initialFiltersState: ProductsFilterParams = {
   category: '',
   sortIn: '',
-  keywords: ''
+  search: ''
 }
 
 export function filtersReducer(
-  state: FiltersState,
+  state: ProductsFilterParams,
   action: FiltersAction
-): FiltersState {
+): ProductsFilterParams {
   switch (action.type) {
     case 'SORT_IN_ASC':
       return { ...state, sortIn: 'asc' }
@@ -46,7 +40,7 @@ export function filtersReducer(
       return { ...state, category: action.value }
 
     case 'SEARCH':
-      return { ...state, keywords: action.value }
+      return { ...state, search: action.value }
 
     case 'CLEAR_FILTERS':
       return initialFiltersState

@@ -4,12 +4,12 @@ import { createContext } from 'react'
 export interface FiltersContextState {
   sortInAscendingMode: () => void
   sortInDescendingMode: () => void
-  searchForProducts: (keywords: string) => void
+  searchForProducts: (search: string) => void
   chooseCategory: (category: Category) => void
   clearFilters: () => void
   sortIn: SortIn
   category: Category
-  keywords: string
+  search: string
   isFiltersChanged: () => boolean
 }
 

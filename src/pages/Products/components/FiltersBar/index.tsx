@@ -9,12 +9,12 @@ import {
   type ReactElement
 } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { FiltersContext } from './FiltersBar.context'
+import { filtersReducer, initialFiltersState } from './FiltersBar.reducer'
 import FiltersBarCategory from './FiltersBarCategory'
 import FiltersBarClear from './FiltersBarClear'
 import FiltersBarSearch from './FiltersBarSearch'
 import FiltersBarSortById from './FiltersBarSortById'
-import { FiltersContext } from './context'
-import { filtersReducer, initialFiltersState } from './reducer'
 
 function FiltersBar({ children }: PropsWithChildren): ReactElement {
   const [state, dispatch] = useReducer(filtersReducer, initialFiltersState)

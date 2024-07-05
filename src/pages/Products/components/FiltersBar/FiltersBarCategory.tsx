@@ -2,7 +2,7 @@ import { type Category } from '@/lib/types'
 import { Icon } from '@iconify/react'
 import { type ReactElement } from 'react'
 import { useLoaderData } from 'react-router-dom'
-import useFiltersContext from './hook/useFiltersContext'
+import useFiltersContext from './FiltersBar.hook'
 
 function FiltersBarCategory(): ReactElement {
   const { categories } = useLoaderData() as { categories: Category[] }

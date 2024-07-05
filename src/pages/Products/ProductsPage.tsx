@@ -1,6 +1,6 @@
 import { type ReactElement } from 'react'
+import FiltersBar from './components/FiltersBar'
 import ProductsList from './components/ProductsList'
-import FiltersBar from './components/filters-bar'
 
 function ProductsPage(): ReactElement {
   return (

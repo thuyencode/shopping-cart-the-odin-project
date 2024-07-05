@@ -1,6 +1,7 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { Navigate, createBrowserRouter } from 'react-router-dom'
 import RouteErrorBoundary from './RouteErrorBoundary'
 import PageContainer from './layouts/PageContainer'
+import NotFoundRoutePage from './pages/404'
 import cartPageRoute from './pages/Cart'
 import homePageRoute from './pages/Home'
 import productPageRoute from './pages/Product'
@@ -21,7 +22,9 @@ export const router = createBrowserRouter(
             { index: true, ...productsPageRoute },
             { path: ':id', ...productPageRoute }
           ]
-        }
+        },
+        { path: '/404', element: <NotFoundRoutePage /> },
+        { path: '*', element: <Navigate to={'/404'} /> }
       ]
     }
   ],

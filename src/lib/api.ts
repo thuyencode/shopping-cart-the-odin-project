@@ -17,26 +17,7 @@ export async function getProduct(options: {
     .get(`products/${options.id}`, {
       signal: options.signal
     })
-    .then((res) => {
-      if (res.data === '') {
-        return new Promise((resolve) => {
-          resolve({
-            id: 0,
-            title: `There's no such product with ID ${options.id}.`,
-            price: 0,
-            description: 'Please choose a product from the Products page.',
-            category: '',
-            image: 'https://placehold.co/400x400?text=Not+Found',
-            rating: {
-              rate: 0,
-              count: 0
-            }
-          })
-        })
-      }
-
-      return res.data
-    })
+    .then((res) => res.data)
 }
 
 export async function getProducts(options: {

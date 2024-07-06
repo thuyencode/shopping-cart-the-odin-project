@@ -18,7 +18,7 @@ function FiltersBarSearch(): ReactElement {
 
   return (
     <form
-      className='input input-bordered flex items-center gap-2'
+      className='input input-bordered flex items-center gap-2 max-sm:w-full'
       onSubmit={handleSubmit}
     >
       <input

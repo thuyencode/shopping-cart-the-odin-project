@@ -95,7 +95,7 @@ function FiltersBar({ children }: PropsWithChildren): ReactElement {
   }
 
   return (
-    <div className='ml-10 flex w-full gap-2'>
+    <div className='flex w-full gap-2'>
       <FiltersContext.Provider
         value={{
           sortInAscendingMode,

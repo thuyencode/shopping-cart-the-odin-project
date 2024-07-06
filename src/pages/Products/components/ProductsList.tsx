@@ -7,7 +7,7 @@ function ProductsList(): ReactElement {
   const { products } = useLoaderData() as { products: Product[] }
 
   return (
-    <div className='grid grid-cols-4 place-items-center gap-10'>
+    <div className='grid-cols-ram grid w-full place-items-center gap-10'>
       {products.map((product) => (
         <ProductCard
           key={product.id}

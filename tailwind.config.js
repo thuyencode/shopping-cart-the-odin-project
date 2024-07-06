@@ -11,6 +11,9 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans]
+      },
+      gridTemplateColumns: {
+        ram: 'repeat(auto-fill, minmax(256px, 1fr))'
       }
     }
   },

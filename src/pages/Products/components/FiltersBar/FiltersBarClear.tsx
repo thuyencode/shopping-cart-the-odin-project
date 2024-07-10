@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react'
 import { type ReactElement } from 'react'
-import useFiltersContext from './FiltersBar.hook'
+import useFiltersContext from './FiltersBar.hooks'
 
 function FiltersBarClear(): ReactElement {
   const { clearFilters, isFiltersChanged } = useFiltersContext()

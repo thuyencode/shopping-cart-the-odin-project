@@ -2,8 +2,8 @@
 import { getProduct } from '@/lib/api'
 import { type Product } from '@/lib/types'
 import isEmpty from 'lodash/isEmpty'
+import { lazy, Suspense } from 'react'
 import { redirect, type Params } from 'react-router-dom'
-import ProductPage from './ProductPage'
 
 interface ProductPageLoader {
   params: Params<string>
@@ -23,9 +23,15 @@ async function loader({
   return data
 }
 
+const ProductPage = lazy(async () => await import('./ProductPage'))
+
 const productPageRoute = {
   loader,
-  element: <ProductPage />
+  element: (
+    <Suspense>
+      <ProductPage />
+    </Suspense>
+  )
 }
 
 export default productPageRoute

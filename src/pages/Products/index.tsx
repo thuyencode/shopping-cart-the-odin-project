@@ -1,7 +1,7 @@
 import { getCategories, getProducts } from '@/lib/api'
 import { type Category, type Product, type SortIn } from '@/lib/types'
+import { lazy, Suspense } from 'react'
 import { type Params } from 'react-router-dom'
-import ProductsPage from './ProductsPage'
 
 interface ProductsPageLoaderProps {
   params: Params<string>
@@ -39,9 +39,15 @@ async function loader({ request }: ProductsPageLoaderProps): Promise<{
   }
 }
 
+const ProductsPage = lazy(async () => await import('./ProductsPage'))
+
 const productsPageRoute = {
   loader,
-  element: <ProductsPage />
+  element: (
+    <Suspense>
+      <ProductsPage />
+    </Suspense>
+  )
 }
 
 export default productsPageRoute

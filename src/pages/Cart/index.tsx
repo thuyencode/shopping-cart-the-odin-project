@@ -1,7 +1,13 @@
-import CartPage from './CartPage'
+import { lazy, Suspense } from 'react'
+
+const CartPage = lazy(async () => await import('./CartPage'))
 
 const cartPageRoute = {
-  element: <CartPage />
+  element: (
+    <Suspense>
+      <CartPage />
+    </Suspense>
+  )
 }
 
 export default cartPageRoute

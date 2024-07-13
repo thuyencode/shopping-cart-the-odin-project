@@ -15,30 +15,35 @@ function useCart(): {
   carts: Cart[] | undefined
   products: Product[] | undefined
   getTotalPrice: () => number
+  getTotalItems: () => number
 } {
   const { data: carts } = useSuspenseQuery(cartsQuery())
   const { data: products } = useSuspenseQuery(productsQuery({}))
 
   function getTotalPrice(): number {
-    if (carts !== undefined && products !== undefined) {
-      return carts?.reduce(
-        (acc, cart) =>
-          acc +
-          cart.products.reduce(
-            (acc, product) =>
-              acc +
-              product.quantity *
-                (products.find((p) => p.id === product.productId)?.price ?? 0),
-            0
-          ),
-        0
-      )
-    }
-
-    return 0
+    return carts?.reduce(
+      (acc, cart) =>
+        acc +
+        cart.products.reduce(
+          (acc, product) =>
+            acc +
+            product.quantity *
+              (products.find((p) => p.id === product.productId)?.price ?? 0),
+          0
+        ),
+      0
+    )
   }
 
-  return { carts, products, getTotalPrice }
+  function getTotalItems(): number {
+    return carts?.reduce(
+      (acc, cart) =>
+        acc + cart.products.reduce((acc, product) => acc + product.quantity, 0),
+      0
+    )
+  }
+
+  return { carts, products, getTotalPrice, getTotalItems }
 }
 
 export default useCart

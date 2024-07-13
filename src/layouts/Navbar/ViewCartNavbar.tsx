@@ -5,7 +5,7 @@ import { type ReactElement } from 'react'
 import { NavLink } from 'react-router-dom'
 
 function ViewCartNavbar(): ReactElement {
-  const { carts, getTotalPrice } = useCart()
+  const { getTotalPrice, getTotalItems } = useCart()
 
   return (
     <details className='dropdown dropdown-end'>
@@ -15,7 +15,7 @@ function ViewCartNavbar(): ReactElement {
             className='badge indicator-item badge-primary badge-sm'
             aria-label='Badge'
           >
-            {carts?.length}
+            {getTotalItems()}
           </div>
           <Icon className='text-xl lg:text-2xl' icon={'mdi:cart-variant'} />
         </div>
@@ -27,7 +27,7 @@ function ViewCartNavbar(): ReactElement {
       >
         <div className='card-body'>
           <h4 className='font-bold'>
-            {carts?.length} {carts?.length === 1 ? 'Item' : 'Items'}
+            {getTotalItems()} {getTotalItems() === 1 ? 'Item' : 'Items'}
           </h4>
 
           <span className='text-info'>Subtotal: ${getTotalPrice()}</span>

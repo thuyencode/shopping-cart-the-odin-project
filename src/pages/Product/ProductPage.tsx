@@ -1,11 +1,20 @@
-import { type Product } from '@/lib/types'
 import { Icon } from '@iconify/react'
+import { useSuspenseQuery } from '@tanstack/react-query'
+import isEmpty from 'lodash/isEmpty'
 import { type ReactElement } from 'react'
-import { Link, useLoaderData } from 'react-router-dom'
+import { Link, Navigate, useLoaderData } from 'react-router-dom'
+import { productDetailQuery } from '.'
 import Rating from './components/Rating'
 
 function ProductPage(): ReactElement {
-  const product = useLoaderData() as Product
+  const { productId } = useLoaderData() as { productId: string }
+  const { data: product, isLoading } = useSuspenseQuery(
+    productDetailQuery(productId)
+  )
+
+  if (!isLoading && isEmpty(product)) {
+    return <Navigate to={'/404'} />
+  }
 
   return (
     <div className='hero-content mb-20 mt-5 w-full self-start md:mt-20'>

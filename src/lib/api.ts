@@ -1,13 +1,14 @@
-import { type Category, type Product, type SortIn } from '@/lib/types'
+import {
+  type Cart,
+  type Category,
+  type Product,
+  type SortIn
+} from '@/lib/types'
 import Axios from 'axios'
-import { setupCache } from 'axios-cache-interceptor'
 
-export const baseApi = setupCache(
-  Axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
-    validateStatus: (status: number) => status === 200
-  })
-)
+export const baseApi = Axios.create({
+  baseURL: import.meta.env.VITE_API_URL
+})
 
 export async function getProduct(options: {
   id: string
@@ -20,11 +21,16 @@ export async function getProduct(options: {
     .then((res) => res.data)
 }
 
-export async function getProducts(options: {
+export interface GetProductsArgs {
   signal: AbortSignal
   category?: Category
   sortIn?: SortIn
-}): Promise<Product[]> {
+  search?: string
+}
+
+export async function getProducts(
+  options: GetProductsArgs
+): Promise<Product[]> {
   let query = 'products'
 
   if (options.category !== undefined) {
@@ -40,6 +46,17 @@ export async function getProducts(options: {
       signal: options.signal
     })
     .then((res) => res.data)
+    .then((data: Product[]) => {
+      const search = options.search
+
+      if (search === undefined) {
+        return data
+      }
+
+      return data.filter((product) =>
+        product.title.toLowerCase().includes(search.toLowerCase())
+      )
+    })
 }
 
 export async function getCategories(options: {
@@ -47,6 +64,27 @@ export async function getCategories(options: {
 }): Promise<Category[]> {
   return await baseApi
     .get('products/categories', {
+      signal: options.signal
+    })
+    .then((res) => res.data)
+}
+
+export async function getCarts(options: {
+  signal: AbortSignal
+}): Promise<Cart[]> {
+  return await baseApi
+    .get('/carts/user/1', {
+      signal: options.signal
+    })
+    .then((res) => res.data)
+}
+
+export async function postToCart(options: {
+  signal: AbortSignal
+  body: Omit<Cart, 'id' | '__v'>
+}): Promise<Cart> {
+  return await baseApi
+    .post('carts', options.body, {
       signal: options.signal
     })
     .then((res) => res.data)

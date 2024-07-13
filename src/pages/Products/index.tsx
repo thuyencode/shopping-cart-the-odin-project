@@ -1,53 +1,28 @@
-import { getCategories, getProducts } from '@/lib/api'
-import { type Category, type Product, type SortIn } from '@/lib/types'
-import { lazy, Suspense } from 'react'
-import { type Params } from 'react-router-dom'
+/* eslint-disable react-refresh/only-export-components */
+import { categoriesQuery, productsQuery } from '@/lib/query'
+import { type Category, type SortIn } from '@/lib/types'
+import { type QueryClient } from '@tanstack/react-query'
+import { lazy } from 'react'
+import { type LoaderFunctionArgs } from 'react-router-dom'
 
-interface ProductsPageLoaderProps {
-  params: Params<string>
-  request: Request
-}
+export function productsLoader(queryClient: QueryClient) {
+  return async function ({ request }: LoaderFunctionArgs) {
+    const searchParams = new URL(request.url).searchParams
+    const category = (searchParams.get('category') ?? undefined) as
+      | Category
+      | undefined
+    const sortIn = (searchParams.get('sortIn') ?? undefined) as
+      | SortIn
+      | undefined
+    const search = searchParams.get('search') ?? undefined
 
-async function loader({ request }: ProductsPageLoaderProps): Promise<{
-  products: Product[]
-  categories: Category[]
-}> {
-  const searchParams = new URL(request.url).searchParams
-  const category = (searchParams.get('category') ?? undefined) as
-    | Category
-    | undefined
-  const sortIn = (searchParams.get('sortIn') ?? undefined) as SortIn | undefined
-  const search = searchParams.get('search') ?? undefined
+    const filters = { category, sortIn, search }
 
-  const products = await getProducts({
-    signal: request.signal,
-    category,
-    sortIn
-  })
+    await queryClient.ensureQueryData(productsQuery(filters))
+    await queryClient.ensureQueryData(categoriesQuery())
 
-  let filteredProducts = products
-
-  if (search !== undefined) {
-    filteredProducts = products.filter((product) =>
-      product.title.toLowerCase().includes(search.toLowerCase())
-    )
-  }
-
-  return {
-    products: filteredProducts,
-    categories: await getCategories({ signal: request.signal })
+    return { filters }
   }
 }
 
-const ProductsPage = lazy(async () => await import('./ProductsPage'))
-
-const productsPageRoute = {
-  loader,
-  element: (
-    <Suspense>
-      <ProductsPage />
-    </Suspense>
-  )
-}
-
-export default productsPageRoute
+export const ProductsPage = lazy(async () => await import('./ProductsPage'))

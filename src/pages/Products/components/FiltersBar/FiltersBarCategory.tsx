@@ -1,11 +1,12 @@
+import { categoriesQuery } from '@/lib/query'
 import { type Category } from '@/lib/types'
 import { Icon } from '@iconify/react'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { type ReactElement } from 'react'
-import { useLoaderData } from 'react-router-dom'
 import useFiltersContext from './FiltersBar.hooks'
 
 function FiltersBarCategory(): ReactElement {
-  const { categories } = useLoaderData() as { categories: Category[] }
+  const { data: categories } = useSuspenseQuery(categoriesQuery())
   const { chooseCategory, category } = useFiltersContext()
 
   function changeDropdownToggleLabel(): string | Category {

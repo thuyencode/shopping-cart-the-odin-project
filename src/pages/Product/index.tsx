@@ -1,37 +1,29 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable react-refresh/only-export-components */
 import { getProduct } from '@/lib/api'
-import { type Product } from '@/lib/types'
-import isEmpty from 'lodash/isEmpty'
-import { lazy, Suspense } from 'react'
-import { redirect, type Params } from 'react-router-dom'
+import { queryOptions, type QueryClient } from '@tanstack/react-query'
+import { lazy } from 'react'
+import { redirect, type LoaderFunctionArgs } from 'react-router-dom'
 
-interface ProductPageLoader {
-  params: Params<string>
-  request: { signal: AbortSignal }
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export function productDetailQuery(id: string) {
+  return queryOptions({
+    queryKey: ['products', id],
+    queryFn: async ({ signal }) => await getProduct({ id, signal })
+  })
 }
 
-async function loader({
-  params,
-  request: { signal }
-}: ProductPageLoader): Promise<Product | Response> {
-  const data = await getProduct({ id: params.id!, signal })
+export function productLoader(queryClient: QueryClient) {
+  return async function ({
+    params
+  }: LoaderFunctionArgs): Promise<Response | { productId: string }> {
+    if (params.id === undefined) {
+      return redirect('/products')
+    }
 
-  if (isEmpty(data)) {
-    return redirect('/404')
+    await queryClient.ensureQueryData(productDetailQuery(params.id))
+
+    return { productId: params.id }
   }
-
-  return data
 }
 
-const ProductPage = lazy(async () => await import('./ProductPage'))
-
-const productPageRoute = {
-  loader,
-  element: (
-    <Suspense>
-      <ProductPage />
-    </Suspense>
-  )
-}
-
-export default productPageRoute
+export const ProductPage = lazy(async () => await import('./ProductPage'))

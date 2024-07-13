@@ -1,49 +1,59 @@
-import { getCarts } from '@/lib/api'
+import { getCart } from '@/lib/api'
 import { productsQuery } from '@/lib/query'
 import { type Cart, type Product } from '@/lib/types'
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query'
+import { useMemo } from 'react'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function cartsQuery() {
+export function cartQuery() {
   return queryOptions({
     queryKey: ['cart'],
-    queryFn: async ({ signal }) => await getCarts({ signal })
+    queryFn: async ({ signal }) => await getCart({ signal })
   })
 }
 
 function useCart(): {
-  carts: Cart[] | undefined
-  products: Product[] | undefined
-  getTotalPrice: () => number
-  getTotalItems: () => number
+  cart: Cart[]
+  productsInCart: Array<Product & { quantity: number }>
+  totalPrice: number
+  totalItems: number
 } {
-  const { data: carts } = useSuspenseQuery(cartsQuery())
+  const { data: cart } = useSuspenseQuery(cartQuery())
   const { data: products } = useSuspenseQuery(productsQuery({}))
 
-  function getTotalPrice(): number {
-    return carts?.reduce(
-      (acc, cart) =>
-        acc +
-        cart.products.reduce(
-          (acc, product) =>
-            acc +
-            product.quantity *
-              (products.find((p) => p.id === product.productId)?.price ?? 0),
-          0
-        ),
-      0
-    )
-  }
+  const productsInCart = useMemo<Array<Product & { quantity: number }>>(
+    () =>
+      cart
+        .map((c) => c.products)
+        .flat()
+        .map(({ productId, quantity }) => {
+          const product = products.find((product) => product.id === productId)
 
-  function getTotalItems(): number {
-    return carts?.reduce(
-      (acc, cart) =>
-        acc + cart.products.reduce((acc, product) => acc + product.quantity, 0),
-      0
-    )
-  }
+          if (product === undefined) {
+            return undefined
+          }
 
-  return { carts, products, getTotalPrice, getTotalItems }
+          return { ...product, quantity }
+        })
+        .filter((product) => product !== undefined),
+    [cart, products]
+  )
+
+  const totalPrice = useMemo(
+    () =>
+      productsInCart.reduce(
+        (acc, product) => acc + product.quantity * product.price,
+        0
+      ),
+    [productsInCart]
+  )
+
+  const totalItems = useMemo(
+    () => productsInCart.reduce((acc, product) => acc + product.quantity, 0),
+    [productsInCart]
+  )
+
+  return { cart, productsInCart, totalPrice, totalItems }
 }
 
 export default useCart

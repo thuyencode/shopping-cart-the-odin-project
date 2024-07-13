@@ -69,7 +69,7 @@ export async function getCategories(options: {
     .then((res) => res.data)
 }
 
-export async function getCarts(options: {
+export async function getCart(options: {
   signal: AbortSignal
 }): Promise<Cart[]> {
   return await baseApi

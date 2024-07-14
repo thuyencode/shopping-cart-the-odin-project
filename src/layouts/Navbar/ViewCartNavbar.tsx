@@ -34,7 +34,11 @@ function ViewCartNavbar(): ReactElement {
 
           <div className='card-actions'>
             <NavLink
-              className='btn btn-primary btn-block'
+              className={({ isActive }) =>
+                isActive
+                  ? 'btn btn-disabled btn-block'
+                  : 'btn btn-primary btn-block'
+              }
               to={'/cart'}
               role='button'
             >

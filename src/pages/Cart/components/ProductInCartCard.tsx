@@ -1,6 +1,7 @@
 import { type ProductInCart } from '@/lib/types'
 import { Icon } from '@iconify/react/dist/iconify.js'
 import { type ReactElement } from 'react'
+import { Link } from 'react-router-dom'
 
 function ProductInCartCard({
   product
@@ -37,10 +38,12 @@ function ProductInCartCard({
         </div>
 
         <div className='card-actions justify-end'>
-          <button className='btn btn-ghost h-10 min-h-10 gap-1'>
-            Check this product
-            <Icon className='text-xl' icon={'mdi:shopping'} />
-          </button>
+          <Link to={`/products/${product.id}`}>
+            <button className='btn btn-ghost h-10 min-h-10 gap-1'>
+              Check this product
+              <Icon className='text-xl' icon={'mdi:shopping'} />
+            </button>
+          </Link>
           <button className='btn btn-ghost h-10 min-h-10 gap-1 text-error'>
             Remove
             <Icon className='text-xl' icon={'mdi:trash-can-outline'} />

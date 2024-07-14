@@ -1,13 +1,9 @@
-import { lazy, Suspense } from 'react'
+import { lazy, type ReactElement, Suspense } from 'react'
 
 const HomePage = lazy(async () => await import('./HomePage'))
 
-const homePageRoute = {
-  element: (
-    <Suspense>
-      <HomePage />
-    </Suspense>
-  )
-}
-
-export default homePageRoute
+export const LazyHomePage = (): ReactElement => (
+  <Suspense>
+    <HomePage />
+  </Suspense>
+)

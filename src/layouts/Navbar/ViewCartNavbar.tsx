@@ -1,11 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import useCart from '@/hooks/useCart'
 import { Icon } from '@iconify/react'
 import { type ReactElement } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 
 function ViewCartNavbar(): ReactElement {
-  const location = useLocation()
+  const { pathname } = useLocation()
   const { totalPrice, totalItems } = useCart()
 
   return (
@@ -19,7 +18,7 @@ function ViewCartNavbar(): ReactElement {
             {totalItems}
           </div>
           <h4
-            className={`${location.pathname === '/cart' ? 'text-primary' : ''} inline-flex items-center gap-1`}
+            className={`${pathname === '/cart' ? 'text-primary' : ''} inline-flex items-center gap-1`}
           >
             <Icon className='text-xl lg:text-2xl' icon={'mdi:cart-variant'} />
             Cart

@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { getProduct } from '@/lib/api'
 import { queryOptions, type QueryClient } from '@tanstack/react-query'
-import { lazy } from 'react'
+import { lazy, Suspense, type ReactElement } from 'react'
 import { redirect, type LoaderFunctionArgs } from 'react-router-dom'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -26,4 +26,10 @@ export function productLoader(queryClient: QueryClient) {
   }
 }
 
-export const ProductPage = lazy(async () => await import('./ProductPage'))
+const ProductPage = lazy(async () => await import('./ProductPage'))
+
+export const LazyProductPage = (): ReactElement => (
+  <Suspense>
+    <ProductPage />
+  </Suspense>
+)

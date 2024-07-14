@@ -1,13 +1,9 @@
-import { lazy, Suspense } from 'react'
+import { lazy, type ReactElement, Suspense } from 'react'
 
 const CartPage = lazy(async () => await import('./CartPage'))
 
-const cartPageRoute = {
-  element: (
-    <Suspense>
-      <CartPage />
-    </Suspense>
-  )
-}
-
-export default cartPageRoute
+export const LazyCartPage = (): ReactElement => (
+  <Suspense>
+    <CartPage />
+  </Suspense>
+)

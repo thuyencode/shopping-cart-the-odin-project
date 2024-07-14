@@ -1,18 +1,19 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import React, { Suspense } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import ErrorBoundary from './ErrorBoundary'
 import './index.css'
 import {
-  cartPageRoute,
-  homePageRoute,
+  LazyCartPage,
+  LazyHomePage,
+  LazyProductPage,
   NotFoundRoutePage,
-  PageContainer
+  PageContainer,
+  productLoader
 } from './pages'
-import { productLoader, ProductPage } from './pages/Product'
-import { productsLoader, ProductsPage } from './pages/Products'
+import { LazyProductsPage, productsLoader } from './pages/Products'
 import RouteErrorBoundary from './RouteErrorBoundary'
 
 const queryClient = new QueryClient({
@@ -30,28 +31,20 @@ const router = createBrowserRouter(
       element: <PageContainer />,
       errorElement: <RouteErrorBoundary />,
       children: [
-        { index: true, ...homePageRoute },
-        { path: 'cart', ...cartPageRoute },
+        { index: true, element: <LazyHomePage /> },
+        { path: 'cart', element: <LazyCartPage /> },
         {
           path: 'products',
           children: [
             {
               index: true,
               loader: productsLoader(queryClient),
-              element: (
-                <Suspense>
-                  <ProductsPage />
-                </Suspense>
-              )
+              element: <LazyProductsPage />
             },
             {
               path: ':id',
               loader: productLoader(queryClient),
-              element: (
-                <Suspense>
-                  <ProductPage />
-                </Suspense>
-              )
+              element: <LazyProductPage />
             }
           ]
         },

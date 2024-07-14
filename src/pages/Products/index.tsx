@@ -2,7 +2,7 @@
 import { categoriesQuery, productsQuery } from '@/lib/query'
 import { type Category, type SortIn } from '@/lib/types'
 import { type QueryClient } from '@tanstack/react-query'
-import { lazy } from 'react'
+import { lazy, type ReactElement, Suspense } from 'react'
 import { type LoaderFunctionArgs } from 'react-router-dom'
 
 export function productsLoader(queryClient: QueryClient) {
@@ -25,4 +25,10 @@ export function productsLoader(queryClient: QueryClient) {
   }
 }
 
-export const ProductsPage = lazy(async () => await import('./ProductsPage'))
+const ProductsPage = lazy(async () => await import('./ProductsPage'))
+
+export const LazyProductsPage = (): ReactElement => (
+  <Suspense>
+    <ProductsPage />
+  </Suspense>
+)

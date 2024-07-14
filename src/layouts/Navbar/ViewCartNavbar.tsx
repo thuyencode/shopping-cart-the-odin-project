@@ -2,9 +2,10 @@
 import useCart from '@/hooks/useCart'
 import { Icon } from '@iconify/react'
 import { type ReactElement } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 
 function ViewCartNavbar(): ReactElement {
+  const location = useLocation()
   const { totalPrice, totalItems } = useCart()
 
   return (
@@ -17,7 +18,12 @@ function ViewCartNavbar(): ReactElement {
           >
             {totalItems}
           </div>
-          <Icon className='text-xl lg:text-2xl' icon={'mdi:cart-variant'} />
+          <h4
+            className={`${location.pathname === '/cart' ? 'text-primary' : ''} inline-flex items-center gap-1`}
+          >
+            <Icon className='text-xl lg:text-2xl' icon={'mdi:cart-variant'} />
+            Cart
+          </h4>
         </div>
       </summary>
 

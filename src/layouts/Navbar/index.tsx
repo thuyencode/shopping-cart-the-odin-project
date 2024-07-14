@@ -7,7 +7,7 @@ import ViewCartNavbar from './ViewCartNavbar'
 function Navbar(): ReactElement {
   return (
     <nav
-      className='navbar sticky top-0 z-10 bg-base-100 shadow-lg'
+      className='navbar sticky top-0 z-10 bg-base-100 px-10 shadow-lg'
       role='navigation'
       aria-label='Navbar'
     >

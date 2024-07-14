@@ -1,4 +1,5 @@
 import useCart from '@/hooks/useCart'
+import { Icon } from '@iconify/react'
 import { type ReactElement } from 'react'
 
 function CartSummaryCard(): ReactElement {
@@ -24,6 +25,7 @@ function CartSummaryCard(): ReactElement {
         <div className='card-actions mt-5'>
           <button className='btn btn-primary btn-block text-base'>
             Checkout
+            <Icon className='text-xl' icon={'mdi:credit-card'} />
           </button>
         </div>
       </div>

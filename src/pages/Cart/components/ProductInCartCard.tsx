@@ -1,5 +1,5 @@
 import { type ProductInCart } from '@/lib/types'
-import { Icon } from '@iconify/react/dist/iconify.js'
+import { Icon } from '@iconify/react'
 import { type ReactElement } from 'react'
 import { Link } from 'react-router-dom'
 

@@ -58,3 +58,8 @@ export interface ProductsFilterParams {
   sortIn: SortIn
   search: string
 }
+
+export type ProductInCart = Product & {
+  quantity: number
+  date: Date
+}

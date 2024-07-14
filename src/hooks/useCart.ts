@@ -1,6 +1,6 @@
 import { getCart } from '@/lib/api'
 import { productsQuery } from '@/lib/query'
-import { type Cart, type Product } from '@/lib/types'
+import { type Cart, type ProductInCart } from '@/lib/types'
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 
@@ -14,26 +14,30 @@ export function cartQuery() {
 
 function useCart(): {
   cart: Cart[]
-  productsInCart: Array<Product & { quantity: number }>
+  productsInCart: ProductInCart[]
   totalPrice: number
   totalItems: number
 } {
   const { data: cart } = useSuspenseQuery(cartQuery())
   const { data: products } = useSuspenseQuery(productsQuery({}))
 
-  const productsInCart = useMemo<Array<Product & { quantity: number }>>(
+  const productsInCart = useMemo<ProductInCart[]>(
     () =>
       cart
-        .map((c) => c.products)
+        .map((c) =>
+          c.products.map((p) => {
+            return { ...p, date: c.date }
+          })
+        )
         .flat()
-        .map(({ productId, quantity }) => {
+        .map(({ productId, quantity, date }) => {
           const product = products.find((product) => product.id === productId)
 
           if (product === undefined) {
             return undefined
           }
 
-          return { ...product, quantity }
+          return { ...product, quantity, date: new Date(date) }
         })
         .filter((product) => product !== undefined),
     [cart, products]

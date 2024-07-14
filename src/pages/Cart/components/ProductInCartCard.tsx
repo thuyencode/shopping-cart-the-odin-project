@@ -1,0 +1,54 @@
+import { type ProductInCart } from '@/lib/types'
+import { Icon } from '@iconify/react/dist/iconify.js'
+import { type ReactElement } from 'react'
+
+function ProductInCartCard({
+  product
+}: {
+  product: ProductInCart
+}): ReactElement {
+  return (
+    <div className='card card-side'>
+      <figure className='min-w-52 rounded-md'>
+        <img
+          className='aspect-square h-52 w-52 object-cover object-top'
+          src={product.image}
+          alt={product.title}
+        />
+      </figure>
+
+      <div className='card-body justify-between py-0'>
+        <div className='card-title flex-col items-start capitalize'>
+          <h4>{product.title}</h4>
+          <span className='text-sm font-light sm:text-base'>
+            {product.category}
+          </span>
+        </div>
+
+        <div>
+          <p className='text-base'>
+            <span className='opacity-80'>Quantity:</span>{' '}
+            <span className='font-medium'>{product.quantity}</span>
+          </p>
+          <p className='text-base'>
+            <span className='opacity-80'>Time added:</span>{' '}
+            <span className='font-medium'>{product.date.toLocaleString()}</span>
+          </p>
+        </div>
+
+        <div className='card-actions justify-end'>
+          <button className='btn btn-ghost h-10 min-h-10 gap-1'>
+            Check this product
+            <Icon className='text-xl' icon={'mdi:shopping'} />
+          </button>
+          <button className='btn btn-ghost h-10 min-h-10 gap-1 text-error'>
+            Remove
+            <Icon className='text-xl' icon={'mdi:trash-can-outline'} />
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default ProductInCartCard

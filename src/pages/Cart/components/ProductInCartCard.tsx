@@ -9,16 +9,16 @@ function ProductInCartCard({
   product: ProductInCart
 }): ReactElement {
   return (
-    <div className='card card-side'>
-      <figure className='min-w-52 rounded-md'>
+    <div className='card sm:card-side'>
+      <figure className='min-w-52 !rounded-md'>
         <img
-          className='aspect-square h-52 w-52 object-cover object-top'
+          className='aspect-square h-52 w-52 object-cover object-top max-sm:rounded-md'
           src={product.image}
           alt={product.title}
         />
       </figure>
 
-      <div className='card-body justify-between py-0'>
+      <div className='card-body justify-between pb-0 pt-4 max-md:px-4 max-sm:px-0 sm:py-0'>
         <div className='card-title flex-col items-start capitalize'>
           <h4>{product.title}</h4>
           <span className='text-sm font-light sm:text-base'>
@@ -37,14 +37,14 @@ function ProductInCartCard({
           </p>
         </div>
 
-        <div className='card-actions justify-end'>
+        <div className='card-actions justify-end max-md:gap-0 max-sm:mt-2.5 max-sm:gap-1'>
           <Link to={`/products/${product.id}`}>
             <button className='btn btn-ghost h-10 min-h-10 gap-1'>
               Check this product
               <Icon className='text-xl' icon={'mdi:shopping'} />
             </button>
           </Link>
-          <button className='btn btn-ghost h-10 min-h-10 gap-1 text-error'>
+          <button className='btn btn-outline btn-error h-10 min-h-10 gap-1 text-error'>
             Remove
             <Icon className='text-xl' icon={'mdi:trash-can-outline'} />
           </button>

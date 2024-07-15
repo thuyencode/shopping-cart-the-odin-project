@@ -12,7 +12,7 @@ function ProductsInCart(): ReactElement {
           <ProductInCartCard product={product} />
 
           {index < productsInCart.length - 1 ? (
-            <div className='divider' />
+            <div className='divider max-sm:my-1' />
           ) : null}
         </Fragment>
       ))}

@@ -30,9 +30,12 @@ function ProductPage(): ReactElement {
         <div className='card-body flex-1 gap-5 py-0 pr-0 max-md:p-0'>
           <div className='card-title justify-between capitalize max-sm:flex-col max-sm:items-start md:flex-col md:items-start'>
             <h2>{product.title}</h2>
-            <span className='text-sm font-light sm:text-base'>
+            <Link
+              className='link-hover link text-sm font-light sm:text-base'
+              to={`/products?category=${product.category}`}
+            >
               {product.category}
-            </span>
+            </Link>
           </div>
 
           <div className='flex items-center justify-between gap-2 md:flex-col md:items-start'>

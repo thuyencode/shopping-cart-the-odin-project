@@ -15,9 +15,7 @@ export async function getProduct(options: {
   signal: AbortSignal
 }): Promise<Product> {
   return await baseApi
-    .get(`products/${options.id}`, {
-      signal: options.signal
-    })
+    .get(`products/${options.id}`, { signal: options.signal })
     .then((res) => res.data)
 }
 
@@ -59,33 +57,30 @@ export async function getProducts(
     })
 }
 
-export async function getCategories(options: {
+export async function getCategories({
+  signal
+}: {
   signal: AbortSignal
 }): Promise<Category[]> {
   return await baseApi
-    .get('products/categories', {
-      signal: options.signal
-    })
+    .get('products/categories', { signal })
     .then((res) => res.data)
 }
 
-export async function getCart(options: {
+export async function getCart({
+  signal
+}: {
   signal: AbortSignal
 }): Promise<Cart[]> {
-  return await baseApi
-    .get('/carts/user/1', {
-      signal: options.signal
-    })
-    .then((res) => res.data)
+  return await baseApi.get('/carts/user/1', { signal }).then((res) => res.data)
 }
 
-export async function postToCart(options: {
+export async function postToCart({
+  signal,
+  ...body
+}: {
   signal: AbortSignal
   body: Omit<Cart, 'id' | '__v'>
 }): Promise<Cart> {
-  return await baseApi
-    .post('carts', options.body, {
-      signal: options.signal
-    })
-    .then((res) => res.data)
+  return await baseApi.post('carts', body, { signal }).then((res) => res.data)
 }

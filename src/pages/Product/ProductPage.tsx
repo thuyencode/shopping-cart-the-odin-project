@@ -4,6 +4,7 @@ import isEmpty from 'lodash/isEmpty'
 import { type ReactElement } from 'react'
 import { Link, Navigate, useLoaderData } from 'react-router-dom'
 import { productDetailQuery } from '.'
+import AddToCart from './components/AddToCart'
 import Rating from './components/Rating'
 
 function ProductPage(): ReactElement {
@@ -40,15 +41,8 @@ function ProductPage(): ReactElement {
           </div>
 
           <div className='card-actions max-md:justify-between'>
-            {product.id !== 0 ? (
-              <button className='btn btn-primary gap-1 sm:text-base'>
-                Add to cart{' '}
-                <Icon
-                  className='text-lg sm:text-xl'
-                  icon={'mdi:cart-variant'}
-                />
-              </button>
-            ) : null}
+            <AddToCart />
+
             <Link to={'/products'}>
               <button className='btn btn-neutral gap-1 sm:text-base'>
                 More products{' '}

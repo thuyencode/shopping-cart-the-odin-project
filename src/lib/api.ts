@@ -77,10 +77,12 @@ export async function getCart({
 
 export async function postToCart({
   signal,
-  ...body
+  body
 }: {
   signal: AbortSignal
   body: Omit<Cart, 'id' | '__v'>
 }): Promise<Cart> {
+  console.log(body)
+
   return await baseApi.post('carts', body, { signal }).then((res) => res.data)
 }

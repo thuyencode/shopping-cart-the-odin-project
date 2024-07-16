@@ -20,7 +20,7 @@ function ProductInCartCard({
         />
       </figure>
 
-      <div className='card-body justify-between pb-0 pt-4 sm:py-0'>
+      <div className='card-body justify-between pb-0 pt-4 max-sm:px-0 sm:py-0'>
         <div className='card-title flex-col items-start capitalize'>
           <h4>{product.title}</h4>
           <span className='text-sm font-light sm:text-base'>
@@ -39,7 +39,7 @@ function ProductInCartCard({
           </p>
         </div>
 
-        <div className='card-actions justify-end max-md:gap-0 max-sm:mt-2.5 max-sm:gap-1'>
+        <div className='card-actions justify-end max-sm:mt-2.5 max-sm:gap-1'>
           <Link to={`/products/${product.id}`}>
             <button className='btn btn-ghost h-10 min-h-10 gap-1'>
               Check this product

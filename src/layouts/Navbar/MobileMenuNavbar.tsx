@@ -10,7 +10,7 @@ function MobileMenuNavbar(): ReactElement {
       </summary>
 
       <ul
-        className='menu dropdown-content z-[1] mt-3 w-52 rounded-box bg-base-300'
+        className='menu dropdown-content z-[1] mt-3 w-52 rounded-box bg-base-300 shadow-lg'
         tabIndex={0}
         role='menu'
       >

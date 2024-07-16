@@ -27,7 +27,7 @@ function ViewCartNavbar(): ReactElement {
       </summary>
 
       <div
-        className='card dropdown-content card-compact z-[1] mt-3 w-52 bg-base-300 !p-0'
+        className='card dropdown-content card-compact z-[1] mt-3 w-52 bg-base-300 !p-0 shadow-lg'
         tabIndex={0}
       >
         <div className='card-body'>

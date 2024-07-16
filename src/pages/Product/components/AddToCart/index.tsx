@@ -1,4 +1,5 @@
 import useCart from '@/hooks/useCart'
+import { type MutationStatus } from '@tanstack/react-query'
 import {
   useState,
   type ChangeEvent,
@@ -12,6 +13,7 @@ import AddToCartQuantity from './AddToCartQuantity'
 import AddToCartSubmit from './AddToCartSubmit'
 
 function AddToCart({ children }: PropsWithChildren): ReactElement {
+  const [status, setStatus] = useState<MutationStatus>('idle')
   const params = useParams()
   const [quantity, setQuantity] = useState(1)
   const { addToCart } = useCart()
@@ -46,12 +48,13 @@ function AddToCart({ children }: PropsWithChildren): ReactElement {
     e.preventDefault()
 
     addToCart({ productId: Number(params.id), quantity })
+    setStatus('success')
   }
 
   return (
     <form className='join border border-neutral' onSubmit={onSubmit}>
       <AddToCartContext.Provider
-        value={{ quantity, addOne, minusOne, onChangeHandler }}
+        value={{ quantity, addOne, minusOne, onChangeHandler, status }}
       >
         {children}
       </AddToCartContext.Provider>

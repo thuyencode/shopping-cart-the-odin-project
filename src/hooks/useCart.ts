@@ -40,6 +40,7 @@ function useCart(): {
   const queryClient = useQueryClient()
 
   const cartMutation = useMutation({
+    mutationKey: ['cart'],
     mutationFn: async ({
       productId,
       quantity
@@ -118,7 +119,13 @@ function useCart(): {
     cartMutation.mutate({ productId, quantity })
   }
 
-  return { cart, productsInCart, totalPrice, totalItems, addToCart }
+  return {
+    cart,
+    productsInCart,
+    totalPrice,
+    totalItems,
+    addToCart
+  }
 }
 
 export default useCart

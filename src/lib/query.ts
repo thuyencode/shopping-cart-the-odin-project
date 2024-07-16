@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { queryOptions } from '@tanstack/react-query'
 import { getCategories, getProducts, type GetProductsArgs } from './api'
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function productsQuery(filters: Omit<GetProductsArgs, 'signal'>) {
   return queryOptions({
     queryKey: ['products', filters],
@@ -9,7 +9,6 @@ export function productsQuery(filters: Omit<GetProductsArgs, 'signal'>) {
   })
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function categoriesQuery() {
   return queryOptions({
     queryKey: ['categories'],

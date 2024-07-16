@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react-refresh/only-export-components */
 import { getProduct } from '@/lib/api'
 import { queryOptions, type QueryClient } from '@tanstack/react-query'
 import { lazy, Suspense, type ReactElement } from 'react'
 import { redirect, type LoaderFunctionArgs } from 'react-router-dom'
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function productDetailQuery(id: string) {
   return queryOptions({
     queryKey: ['products', id],

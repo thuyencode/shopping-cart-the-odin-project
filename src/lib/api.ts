@@ -75,14 +75,8 @@ export async function getCart({
   return await baseApi.get('/carts/user/1', { signal }).then((res) => res.data)
 }
 
-export async function postToCart({
-  signal,
-  body
-}: {
-  signal: AbortSignal
+export async function postToCart(
   body: Omit<Cart, 'id' | '__v'>
-}): Promise<Cart> {
-  console.log(body)
-
-  return await baseApi.post('carts', body, { signal }).then((res) => res.data)
+): Promise<Cart> {
+  return await baseApi.post('carts', body).then((res) => res.data)
 }

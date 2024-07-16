@@ -1,3 +1,5 @@
+import { type UUID } from 'crypto'
+
 export interface Product {
   id: number
   title: string
@@ -59,7 +61,9 @@ export interface ProductsFilterParams {
   search: string
 }
 
+export type CartWithUUID = Cart & { cartUUID: UUID }
+
 export type ProductInCart = Product & {
   quantity: number
   date: Date
-}
+} & Pick<CartWithUUID, 'cartUUID'>

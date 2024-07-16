@@ -32,7 +32,7 @@ function ProductPage(): ReactElement {
             <h2>{product.title}</h2>
             <Link
               className='link-hover link text-sm font-light sm:text-base'
-              to={`/products?category=${product.category}`}
+              to={`/pro ducts?category=${product.category}`}
             >
               {product.category}
             </Link>
@@ -44,7 +44,10 @@ function ProductPage(): ReactElement {
           </div>
 
           <div className='card-actions max-md:justify-between'>
-            <AddToCart />
+            <AddToCart>
+              <AddToCart.Submit />
+              <AddToCart.Quantity />
+            </AddToCart>
 
             <Link to={'/products'}>
               <button className='btn btn-neutral gap-1 sm:text-base'>

@@ -6,7 +6,7 @@ function CartSummaryCard(): ReactElement {
   const { totalPrice, totalItems } = useCart()
 
   return (
-    <div className='card sticky top-28 w-96 bg-base-300 max-lg:mx-auto'>
+    <div className='card sticky top-28 w-full bg-base-300 max-lg:mx-auto sm:w-96'>
       <div className='card-body gap-5'>
         <h4 className='card-title'>Order summary</h4>
 

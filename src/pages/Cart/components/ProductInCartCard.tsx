@@ -20,7 +20,7 @@ function ProductInCartCard({
         />
       </figure>
 
-      <div className='card-body justify-between pb-0 pt-4 max-md:px-4 max-sm:px-0 sm:py-0'>
+      <div className='card-body justify-between pb-0 pt-4 sm:py-0'>
         <div className='card-title flex-col items-start capitalize'>
           <h4>{product.title}</h4>
           <span className='text-sm font-light sm:text-base'>

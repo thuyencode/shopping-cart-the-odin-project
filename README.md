@@ -1,5 +1,7 @@
 # Project: Shopping Cart
 
+https://github.com/user-attachments/assets/ecc9cac7-f8cf-4929-bea8-e26c40a6b3e2
+
 Front-end's tech stack:
 
 [![Tech stack](https://skillicons.dev/icons?i=ts,react,vite,tailwindcss,&theme=light)](https://skillicons.dev)
@@ -8,7 +10,7 @@ and [DaisyUI](https://daisyui.com) with [TanStack Query](https://tanstack.com/qu
 
 Back-end: [Fake Store API](https://fakestoreapi.com).
 
-[More detail information here](https://www.theodinproject.com/lessons/node-path-react-new-memory-card).
+[More detail information here](https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart).
 
 ## Getting started
 

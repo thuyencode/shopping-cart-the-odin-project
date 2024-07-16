@@ -4,9 +4,11 @@ import { type ReactElement } from 'react'
 import { Link } from 'react-router-dom'
 
 function ProductInCartCard({
-  product
+  product,
+  onClick
 }: {
   product: ProductInCart
+  onClick: () => void
 }): ReactElement {
   return (
     <div className='card sm:card-side'>
@@ -44,7 +46,10 @@ function ProductInCartCard({
               <Icon className='text-xl' icon={'mdi:shopping'} />
             </button>
           </Link>
-          <button className='btn btn-outline btn-error h-10 min-h-10 gap-1 text-error'>
+          <button
+            className='btn btn-outline btn-error h-10 min-h-10 gap-1 text-error'
+            onClick={onClick}
+          >
             Remove
             <Icon className='text-xl' icon={'mdi:trash-can-outline'} />
           </button>

@@ -7,6 +7,7 @@ import {
   useQueryClient,
   useSuspenseQuery
 } from '@tanstack/react-query'
+import { type UUID } from 'crypto'
 import { useMemo } from 'react'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -28,19 +29,25 @@ interface AddToCartArgs {
   quantity: number
 }
 
+interface RemoveFromCartArgs {
+  productId: number
+  cartUUID: UUID
+}
+
 function useCart(): {
   cart: CartWithUUID[]
   productsInCart: ProductInCart[]
   totalPrice: number
   totalItems: number
   addToCart: (args: AddToCartArgs) => void
+  removeFromCart: (args: RemoveFromCartArgs) => void
 } {
   const { data: cart } = useSuspenseQuery(cartQuery())
   const { data: products } = useSuspenseQuery(productsQuery({}))
   const queryClient = useQueryClient()
 
-  const cartMutation = useMutation({
-    mutationKey: ['cart'],
+  const addToCartMutation = useMutation({
+    mutationKey: ['addToCart'],
     mutationFn: async ({
       productId,
       quantity
@@ -65,6 +72,35 @@ function useCart(): {
       })
 
       queryClient.setQueryData(['cart'], [data, ...cart])
+    }
+  })
+
+  const removeFromCartMutation = useMutation({
+    mutationKey: ['removeFromCart'],
+    mutationFn: async ({
+      productId,
+      cartUUID
+    }: RemoveFromCartArgs): Promise<void> => {
+      await queryClient.invalidateQueries({
+        queryKey: ['cart'],
+        refetchType: 'none'
+      })
+
+      queryClient.setQueryData(
+        ['cart'],
+        cart
+          .map((c) => {
+            if (c.cartUUID !== cartUUID) {
+              return c
+            }
+
+            return {
+              ...c,
+              products: c.products.filter((p) => p.productId !== productId)
+            }
+          })
+          .filter((c) => c.products.length > 0)
+      )
     }
   })
 
@@ -116,7 +152,11 @@ function useCart(): {
     productId: number
     quantity: number
   }): void {
-    cartMutation.mutate({ productId, quantity })
+    addToCartMutation.mutate({ productId, quantity })
+  }
+
+  function removeFromCart({ productId, cartUUID }: RemoveFromCartArgs): void {
+    removeFromCartMutation.mutate({ productId, cartUUID })
   }
 
   return {
@@ -124,7 +164,8 @@ function useCart(): {
     productsInCart,
     totalPrice,
     totalItems,
-    addToCart
+    addToCart,
+    removeFromCart
   }
 }
 

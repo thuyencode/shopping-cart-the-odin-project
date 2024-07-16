@@ -12,7 +12,7 @@ function ViewCartNavbar(): ReactElement {
       <summary className='btn btn-ghost' tabIndex={0} role='button'>
         <div className='indicator'>
           <div
-            className='badge indicator-item badge-primary badge-sm'
+            className='badge indicator-item badge-primary badge-sm truncate'
             aria-label='Badge'
           >
             {totalItems}

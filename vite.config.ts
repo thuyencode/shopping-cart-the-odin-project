@@ -6,7 +6,6 @@ import simpleHtmlPlugin from 'vite-plugin-simple-html'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/shopping-cart-the-odin-project',
   plugins: [
     react(),
     simpleHtmlPlugin({ minify: true }),

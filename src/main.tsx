@@ -24,37 +24,34 @@ const queryClient = new QueryClient({
   }
 })
 
-const router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      element: <PageContainer />,
-      errorElement: <RouteErrorBoundary />,
-      children: [
-        { index: true, element: <LazyHomePage /> },
-        { path: 'cart', element: <LazyCartPage /> },
-        {
-          path: 'products',
-          children: [
-            {
-              index: true,
-              loader: productsLoader(queryClient),
-              element: <LazyProductsPage />
-            },
-            {
-              path: ':id',
-              loader: productLoader(queryClient),
-              element: <LazyProductPage />
-            }
-          ]
-        },
-        { path: '/404', element: <NotFoundRoutePage /> },
-        { path: '*', element: <Navigate to={'/404'} /> }
-      ]
-    }
-  ],
-  { basename: import.meta.env.BASE_URL }
-)
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <PageContainer />,
+    errorElement: <RouteErrorBoundary />,
+    children: [
+      { index: true, element: <LazyHomePage /> },
+      { path: 'cart', element: <LazyCartPage /> },
+      {
+        path: 'products',
+        children: [
+          {
+            index: true,
+            loader: productsLoader(queryClient),
+            element: <LazyProductsPage />
+          },
+          {
+            path: ':id',
+            loader: productLoader(queryClient),
+            element: <LazyProductPage />
+          }
+        ]
+      },
+      { path: '/404', element: <NotFoundRoutePage /> },
+      { path: '*', element: <Navigate to={'/404'} /> }
+    ]
+  }
+])
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement).render(
   <React.StrictMode>

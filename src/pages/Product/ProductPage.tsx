@@ -32,7 +32,7 @@ function ProductPage(): ReactElement {
             <h2>{product.title}</h2>
             <Link
               className='link-hover link text-sm font-light sm:text-base'
-              to={`/pro ducts?category=${product.category}`}
+              to={`/products?category=${product.category}`}
             >
               {product.category}
             </Link>

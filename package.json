@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://thuyencode.github.io/shopping-cart-the-odin-project/",
   "repository": {
     "GitHub": "https://github.com/thuyencode/shopping-cart-the-odin-project"
   },
@@ -11,8 +10,7 @@
     "dev": "bunx --bun vite",
     "build": "bunx --bun vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "bunx --bun vite preview",
-    "deploy": "gh-pages --dist 'dist' --branch 'gh-pages'"
+    "preview": "bunx --bun vite preview"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.51.1",
@@ -39,7 +37,6 @@
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.8",
-    "gh-pages": "^6.1.1",
     "lodash": "^4.17.21",
     "postcss": "^8.4.39",
     "prettier": "^3.3.3",

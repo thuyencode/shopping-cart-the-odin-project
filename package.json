@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://shopping-cart-the-odin-project.vercel.app",
   "repository": {
     "GitHub": "https://github.com/thuyencode/shopping-cart-the-odin-project"
   },

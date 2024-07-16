@@ -3,6 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://thuyencode.github.io/shopping-cart-the-odin-project/",
+  "repository": {
+    "GitHub": "https://github.com/thuyencode/shopping-cart-the-odin-project"
+  },
   "scripts": {
     "dev": "bunx --bun vite",
     "build": "bunx --bun vite build",

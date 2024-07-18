@@ -3,18 +3,18 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
+
 import ErrorBoundary from './ErrorBoundary'
-import './index.css'
-import {
-  LazyCartPage,
-  LazyHomePage,
-  LazyProductPage,
-  NotFoundRoutePage,
-  PageContainer,
-  productLoader
-} from './pages'
-import { LazyProductsPage, productsLoader } from './pages/Products'
 import RouteErrorBoundary from './RouteErrorBoundary'
+import './index.css'
+
+import PageContainer from './layouts/PageContainer'
+
+import NotFoundRoutePage from './pages/404'
+import { LazyCartPage } from './pages/Cart'
+import { LazyHomePage } from './pages/Home'
+import { LazyProductPage, productLoader } from './pages/Product'
+import { LazyProductsPage, productsLoader } from './pages/Products'
 
 const queryClient = new QueryClient({
   defaultOptions: {

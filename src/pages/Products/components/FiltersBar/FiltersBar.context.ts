@@ -1,7 +1,7 @@
 import { type Category, type SortIn } from '@/lib/types'
 import { createContext } from 'react'
 
-export interface FiltersContextState {
+export interface FiltersContext {
   sortInAscendingMode: () => void
   sortInDescendingMode: () => void
   searchForProducts: (search: string) => void
@@ -13,4 +13,5 @@ export interface FiltersContextState {
   isFiltersChanged: () => boolean
 }
 
-export const FiltersContext = createContext<FiltersContextState | null>(null)
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const FiltersContext = createContext<FiltersContext | null>(null)

@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react'
 import { useEffect, useState, type FormEvent, type ReactElement } from 'react'
-import useFiltersContext from './FiltersBar.hooks'
+import useFiltersContext from './FiltersBar.hook'
 
 function FiltersBarSearch(): ReactElement {
   const [input, setInput] = useState('')

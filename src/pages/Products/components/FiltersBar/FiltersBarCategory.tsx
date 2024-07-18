@@ -3,7 +3,7 @@ import { type Category } from '@/lib/types'
 import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { type ReactElement } from 'react'
-import useFiltersContext from './FiltersBar.hooks'
+import useFiltersContext from './FiltersBar.hook'
 
 function FiltersBarCategory(): ReactElement {
   const { data: categories } = useSuspenseQuery(categoriesQuery())

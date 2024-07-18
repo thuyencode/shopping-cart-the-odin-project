@@ -1,7 +1,7 @@
 import { type MutationStatus } from '@tanstack/react-query'
 import { type ChangeEvent, createContext } from 'react'
 
-export interface AddToCartContextState {
+export interface AddToCartContext {
   quantity: number
   addOne: () => void
   minusOne: () => void
@@ -9,6 +9,5 @@ export interface AddToCartContextState {
   status: MutationStatus
 }
 
-export const AddToCartContext = createContext<AddToCartContextState | null>(
-  null
-)
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const AddToCartContext = createContext<AddToCartContext | null>(null)

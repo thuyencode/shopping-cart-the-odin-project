@@ -1,10 +1,7 @@
 import { useContext } from 'react'
-import {
-  AddToCartContext,
-  type AddToCartContextState
-} from './AddToCart.context'
+import { AddToCartContext } from './AddToCart.context'
 
-export default function useAddToCartContext(): AddToCartContextState {
+export default function useAddToCartContext(): AddToCartContext {
   const context = useContext(AddToCartContext)
 
   if (context == null) {

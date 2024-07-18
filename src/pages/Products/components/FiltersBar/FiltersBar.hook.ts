@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import { FiltersContext, type FiltersContextState } from './FiltersBar.context'
+import { FiltersContext } from './FiltersBar.context'
 
-export default function useFiltersContext(): FiltersContextState {
+export default function useFiltersContext(): FiltersContext {
   const context = useContext(FiltersContext)
 
   if (context == null) {

@@ -24,6 +24,8 @@ function ProductPage(): ReactElement {
           <img
             className='w-full !max-w-96 self-start rounded'
             src={product.image}
+            loading='lazy'
+            decoding='async'
           />
         </figure>
 

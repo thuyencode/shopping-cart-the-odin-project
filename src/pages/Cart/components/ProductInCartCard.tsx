@@ -17,6 +17,8 @@ function ProductInCartCard({
           className='aspect-square h-52 w-52 object-cover object-top max-sm:rounded-md'
           src={product.image}
           alt={product.title}
+          loading='lazy'
+          decoding='async'
         />
       </figure>
 

@@ -18,6 +18,8 @@ function ProductCard(
           <img
             className='aspect-square object-cover object-top duration-300 hover:scale-105'
             src={props.image}
+            loading='lazy'
+            decoding='async'
           />
         </figure>
 

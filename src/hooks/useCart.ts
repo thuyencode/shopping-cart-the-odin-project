@@ -10,7 +10,6 @@ import {
 import { type UUID } from 'crypto'
 import { useMemo } from 'react'
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function cartQuery() {
   return queryOptions({
     queryKey: ['cart'],

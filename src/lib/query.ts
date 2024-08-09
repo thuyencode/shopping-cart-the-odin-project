@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { queryOptions } from '@tanstack/react-query'
 import { getCategories, getProducts, type GetProductsArgs } from './api'
 

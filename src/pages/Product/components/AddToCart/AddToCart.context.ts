@@ -9,5 +9,4 @@ export interface AddToCartContext {
   status: MutationStatus
 }
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const AddToCartContext = createContext<AddToCartContext | null>(null)

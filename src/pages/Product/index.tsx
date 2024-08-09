@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react-refresh/only-export-components */
 import { getProduct } from '@/lib/api'
 import { queryOptions, type QueryClient } from '@tanstack/react-query'

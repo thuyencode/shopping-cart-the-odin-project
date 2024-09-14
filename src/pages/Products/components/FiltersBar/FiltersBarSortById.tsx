@@ -1,43 +1,46 @@
+import { withClose } from '@/components/hoc'
 import { Icon } from '@iconify/react'
-import { type ReactElement } from 'react'
+import { forwardRef, type ReactElement } from 'react'
 import useFiltersContext from './FiltersBar.hook'
 
-function FiltersBarSortById(): ReactElement {
-  const { sortInAscendingMode, sortInDescendingMode, sortIn } =
-    useFiltersContext()
+const FiltersBarSortById: () => ReactElement = withClose(
+  forwardRef<HTMLDetailsElement>(function (_, ref) {
+    const { sortInAscendingMode, sortInDescendingMode, sortIn } =
+      useFiltersContext()
 
-  function changeDropdownToggleLabel(): ReactElement {
-    switch (sortIn) {
-      case 'asc':
-        return <Ascending />
-      case 'desc':
-        return <Descending />
-      default:
-        return <Default />
+    function changeDropdownToggleLabel(): ReactElement {
+      switch (sortIn) {
+        case 'asc':
+          return <Ascending />
+        case 'desc':
+          return <Descending />
+        default:
+          return <Default />
+      }
     }
-  }
 
-  return (
-    <details className='dropdown' role='listbox'>
-      <summary className='btn' tabIndex={0}>
-        {changeDropdownToggleLabel()}
-      </summary>
+    return (
+      <details className='dropdown' role='listbox' ref={ref}>
+        <summary className='btn' tabIndex={0}>
+          {changeDropdownToggleLabel()}
+        </summary>
 
-      <ul
-        className='menu dropdown-content z-[1] mt-2 w-52 rounded-box bg-base-300'
-        role='menu'
-        tabIndex={0}
-      >
-        <li role='menuitem' onClick={sortInAscendingMode}>
-          <Ascending />
-        </li>
-        <li role='menuitem' onClick={sortInDescendingMode}>
-          <Descending />
-        </li>
-      </ul>
-    </details>
-  )
-}
+        <ul
+          className='menu dropdown-content z-[1] mt-2 w-52 rounded-box bg-base-300'
+          role='menu'
+          tabIndex={0}
+        >
+          <li role='menuitem' onClick={sortInAscendingMode}>
+            <Ascending />
+          </li>
+          <li role='menuitem' onClick={sortInDescendingMode}>
+            <Descending />
+          </li>
+        </ul>
+      </details>
+    )
+  })
+)
 
 function Default(): ReactElement {
   return (
